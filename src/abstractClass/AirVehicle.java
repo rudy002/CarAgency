@@ -3,15 +3,15 @@ package abstractClass;
 public abstract class AirVehicle extends Vehicle {
 
     //Data members
-    enum AirVehicleType {civilian, military};
+    protected enum AirVehicleType {civilian, military};
 
-    private AirVehicleType type; // type of the vehicle.
+    protected AirVehicleType type; // type of the vehicle.
 
     //need to add other data member.
 
     public AirVehicle(String modelName, double totalDistance, int MaxNumberPassenger, double maxSpeed, AirVehicleType type) {
         super(modelName, totalDistance, MaxNumberPassenger, maxSpeed);
-        this.type = type;
+        setType(type);
     }
 
     public boolean setType(AirVehicleType type) {
@@ -22,4 +22,6 @@ public abstract class AirVehicle extends Vehicle {
             return false;
         }
     }
+
+
 }

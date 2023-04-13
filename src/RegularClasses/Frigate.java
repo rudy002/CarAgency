@@ -1,30 +1,23 @@
 package RegularClasses;
-
 //import packages
 import abstractClass.IComercial;
 import abstractClass.IEngine;
-import abstractClass.LandVehicle;
+import abstractClass.MarineVehicle;
 
-public class Jeep extends LandVehicle implements IEngine, IComercial {
+public class Frigate extends MarineVehicle implements IEngine {
 
     //data members
+
     private double averageFuelConsumption; // average fuel consumption of the vehicle.
 
     private double lifeTimeEngine; // lifetime of the engine.
 
-
-
     //Constructor
-    public Jeep(String modelName, double maxSpeed, double averageFuelConsumption, double lifeTimeEngine) {
-        super(modelName, 0, 5, maxSpeed, kindOfLand.dirt, 4);
 
-        SetAverageFuelConsumption(averageFuelConsumption);
-
-    }
-
-    @Override //from interface ICommercial
-    public String typeLicense() {
-        return typeLicense.mini.toString();
+    public Frigate(String modelName, int MaxNumberPassenger, double maxSpeed) {
+        super(modelName, 0, MaxNumberPassenger, maxSpeed, "Israel");
+        SetAverageFuelConsumption(500);
+        SetLifeTimeEngine(4);
     }
 
     @Override //from interface IEngine

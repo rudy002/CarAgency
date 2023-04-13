@@ -6,7 +6,7 @@ public interface INotEngine {
         A, B, C;
     }
 
-    public String setSourceOfEnergy(); // set the source of energy of the vehicle.
+    public boolean setSourceOfEnergy(String source); // set the source of energy of the vehicle.
 
-    public char scoreEnergy(); // set the score of the energy of the vehicle.
+    public Boolean scoreEnergy(scoreEnergy score); // set the score of the energy of the vehicle.
 }
