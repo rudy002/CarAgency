@@ -10,7 +10,6 @@ public abstract class Vehicle {
     private double maxSpeed; // maximum speed of the vehicle
 
     //Constructors
-
     public Vehicle(String modelName, double totalDistance, int MaxNumberPassenger, double maxSpeed) {
         this.modelName = modelName;
         this.totalDistance = totalDistance;
@@ -18,6 +17,7 @@ public abstract class Vehicle {
         this.maxSpeed = maxSpeed;
     }
 
+    //getters and setters
     public boolean setTotalDistance(double totalDistance) {
         try {
             this.totalDistance += totalDistance;
@@ -27,10 +27,25 @@ public abstract class Vehicle {
         }
     }
 
-    public String toString() {
-        return "Model name: " + modelName + "\nTotal distance: " + totalDistance + "\nMax number of passengers: " + MaxNumberPassenger + "\nMax speed: " + maxSpeed;
+    public String getModelName() {
+        return modelName;
     }
 
+    public double getTotalDistance() {
+        return totalDistance;
+    }
+
+    public int getMaxNumberPassenger() {
+        return MaxNumberPassenger;
+    }
+
+    public double getMaxSpeed() {
+        return maxSpeed;
+    }
+
+
+
+    //Methods
 
     @Override
     public boolean equals(Object obj) {
@@ -40,11 +55,17 @@ public abstract class Vehicle {
         if (obj == this) {
             return true;
         }
-        if (obj.getClass() != this.getClass()) {
+        if(!(obj instanceof Vehicle))
+        {
             return false;
         }
         Vehicle v = (Vehicle) obj;
-        return (this.modelName == v.modelName && this.totalDistance == v.totalDistance && this.MaxNumberPassenger == v.MaxNumberPassenger && this.maxSpeed == v.maxSpeed);
+        return (this.modelName.equals(v.modelName) && this.totalDistance == v.totalDistance && this.MaxNumberPassenger == v.MaxNumberPassenger && this.maxSpeed == v.maxSpeed);
+    }
+
+    @Override
+    public String toString() {
+        return "Model name: " + getModelName() + ", Total distance: " + getTotalDistance() + ", Maximum number of passengers: " + getMaxNumberPassenger() + ", Maximum speed: " + getMaxSpeed();
     }
 }
 

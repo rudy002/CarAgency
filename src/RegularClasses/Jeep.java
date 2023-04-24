@@ -27,6 +27,12 @@ public class Jeep extends LandVehicle implements IEngine, IComercial {
         return typeLicense.mini.toString();
     }
 
+
+    //getters and setters
+    public double getAverageFuelConsumption() {
+        return averageFuelConsumption;
+    }
+
     @Override //from interface IEngine
     public boolean SetAverageFuelConsumption(double Average) {
         try {
@@ -51,6 +57,31 @@ public class Jeep extends LandVehicle implements IEngine, IComercial {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    public double getLifeTimeEngine() {
+        return lifeTimeEngine;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (obj == this) {
+            return true;
+        }
+        if(!(obj instanceof Jeep))
+        {
+            return false;
+        }
+        Jeep v = (Jeep) obj;
+        return super.equals(obj) && v.averageFuelConsumption == this.averageFuelConsumption && v.lifeTimeEngine == this.lifeTimeEngine;
+    }
+
+    @Override
+    public String toString() {
+        return "Jeep : " + super.toString() + ",  Average Fuel Consummation : " + getAverageFuelConsumption() + ", life time of Engine : " + getLifeTimeEngine() + ", type of license : " + typeLicense();
     }
 
 }

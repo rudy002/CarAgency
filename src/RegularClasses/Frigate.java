@@ -20,6 +20,8 @@ public class Frigate extends MarineVehicle implements IEngine {
         SetLifeTimeEngine(4);
     }
 
+
+    //getters and setters
     @Override //from interface IEngine
     public boolean SetAverageFuelConsumption(double Average) {
         try {
@@ -31,6 +33,10 @@ public class Frigate extends MarineVehicle implements IEngine {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    public double getAverageFuelConsumption() {
+        return averageFuelConsumption;
     }
 
     @Override //from interface IEngine
@@ -45,5 +51,32 @@ public class Frigate extends MarineVehicle implements IEngine {
             return false;
         }
     }
+
+    public double getLifeTimeEngine() {
+        return lifeTimeEngine;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (obj == this) {
+            return true;
+        }
+        if(!(obj instanceof Frigate))
+        {
+            return false;
+        }
+        Frigate v = (Frigate) obj;
+        return super.equals(obj) && v.averageFuelConsumption == this.averageFuelConsumption && v.lifeTimeEngine == this.lifeTimeEngine;
+    }
+
+    @Override
+    public String toString() {
+        return "Frigate : " + super.toString() + ", Average Fuel Consummation : " + getAverageFuelConsumption() + "LifeTime of Engine : " + getLifeTimeEngine();
+    }
+
+
 
 }

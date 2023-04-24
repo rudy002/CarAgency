@@ -9,11 +9,14 @@ public abstract class AirVehicle extends Vehicle {
 
     //need to add other data member.
 
+
+    //constructor
     public AirVehicle(String modelName, double totalDistance, int MaxNumberPassenger, double maxSpeed, AirVehicleType type) {
         super(modelName, totalDistance, MaxNumberPassenger, maxSpeed);
         setType(type);
     }
 
+    //getters and setters
     public boolean setType(AirVehicleType type) {
         try {
             this.type = type;
@@ -23,5 +26,29 @@ public abstract class AirVehicle extends Vehicle {
         }
     }
 
+    public AirVehicleType getType() {
+        return type;
+    }
 
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (obj == this) {
+            return true;
+        }
+        if(!(obj instanceof AirVehicle))
+        {
+            return false;
+        }
+        AirVehicle v = (AirVehicle) obj;
+        return super.equals(obj) && v.type == this.type;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", Air vehicle type : " + getType();
+    }
 }
