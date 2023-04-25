@@ -31,7 +31,6 @@ public class Main {
         Scanner input = new Scanner(System.in);
         ArrayList<Vehicle> vehicleList = new ArrayList<Vehicle>();
 
-
         while(check) { //Enter all vehicles
             do {
                 PrintTypeVehicle();
@@ -80,21 +79,11 @@ public class Main {
             }
         }
 
-
-
-
-
-        //Built All Vehicles of the Car agency
-
-//        vehicleList.add(new Jeep("Range Rover", 200, 30, 10));
-//        vehicleList.add(new Frigate("c'est marseille bb", 100, 13));
-//        vehicleList.add(new SpyPlane("Cannabis"));
-
         while (true){
             PrintMenu();
             userChoice =  Choice();
             switch (userChoice) {
-                case 1 -> { //BUY CAR
+                case 1 -> {
                     PrintSpecificTypeFromListOrAll(vehicleList, 5);
                     System.out.println("\n\n");
                     PrintTypeVehicle();
@@ -172,7 +161,7 @@ public class Main {
                         }
                     }
 
-                }
+                }//BUY VEHICLE
                 case 2 -> {
                     int choice, countnum;
                     Scanner input1 = new Scanner(System.in);
@@ -181,13 +170,12 @@ public class Main {
                         choice = input1.nextInt();
                     } while (choice > countnum && choice < 0);
 
-                }
-
+                }//TAKE VEHICLE FOR TEST
                 case 3 -> {
                     for (Vehicle i : vehicleList) {
                         i.setTotalDistance(0);
                     }
-                }
+                }//RESET TOTAL DISTANCE OF ALL VEHICLE.
                 case 4 -> {
                     Scanner input1 = new Scanner(System.in);
                     System.out.println("Enter new name of the flag");
@@ -198,14 +186,14 @@ public class Main {
                             System.out.println(i.toString());
                         }
                     }
-                }
+                }//CHANGE FLAG NAME OF ALL MARINE VEHICLE (FRIGATE)
                 default -> {
                     System.out.println("Bye LE SANG ");
                     exit(0);
-                }
+                }//EXIT OF THE SYSTEM
             }
 
-        }
+        }//All options of the MENU
 
     }
 
@@ -242,7 +230,7 @@ public class Main {
     public static void PrintTypeVehicle(){
         System.out.println("which type of vehicle you want ?");
         System.out.println("1 - GamePlane\n2 - SpyPlane\n3 - Frigate\n4 - Jeep\n5 - Nothing Else.");
-    }
+    } //Print all type vehicle
 
     public static int WhichIndex(ArrayList<Vehicle> vehicleList, Vehicle vehicle){
         int countnum =1;
@@ -253,7 +241,7 @@ public class Main {
             countnum++;
         }
         return -1;
-    }
+    }//Find index of specific object.
 
     public static void PrintSpecificTypeFromListOrAll(ArrayList<Vehicle> vehicleList, int type){
         int j=1;
@@ -312,7 +300,7 @@ public class Main {
             }
         }
 
-    }
+    }//print vehicles by type of all vehicle.
 
 
 }
