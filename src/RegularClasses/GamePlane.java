@@ -55,7 +55,7 @@ public class GamePlane extends AirVehicle implements INotEngine {
             return false;
         }
         GamePlane v = (GamePlane) obj;
-        return super.equals(obj) && v.sourceOfEnergy.equals(this.sourceOfEnergy);
+        return super.equals(obj);
     }
 
     @Override

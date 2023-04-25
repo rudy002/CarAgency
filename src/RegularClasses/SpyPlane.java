@@ -65,7 +65,7 @@ public class SpyPlane extends AirVehicle implements INotEngine {
             return false;
         }
         SpyPlane v = (SpyPlane) obj;
-        return super.equals(obj) && v.sourceOfEnergy == this.sourceOfEnergy;
+        return super.equals(obj) && v.sourceOfEnergy.equals(this.sourceOfEnergy) ;
     }
 
     @Override
