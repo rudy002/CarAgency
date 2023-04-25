@@ -17,15 +17,21 @@ public abstract class Vehicle {
         this.maxSpeed = maxSpeed;
     }
 
+    public void TravelDistance(double distance){
+        double dis = getTotalDistance() + distance;
+        setTotalDistance(dis);
+    }
+
     //getters and setters
     public boolean setTotalDistance(double totalDistance) {
-        try {
-            this.totalDistance += totalDistance;
+        if (totalDistance >0) {
+            this.totalDistance = totalDistance;
             return true;
-        } catch (Exception e) {
-            return false;
         }
+        else return false;
     }
+
+
 
     public String getModelName() {
         return modelName;

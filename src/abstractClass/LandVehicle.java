@@ -12,7 +12,8 @@ public abstract class LandVehicle extends Vehicle{
     //constructor
     public LandVehicle(String modelName, double totalDistance, int MaxNumberPassenger, double maxSpeed, kindOfLand type, int numberOfWheels) {
         super(modelName, totalDistance, MaxNumberPassenger, maxSpeed);
-        setType(type);
+        this.type = type;
+        //setType(type);
         this.numberOfWheels = numberOfWheels;
     }
 

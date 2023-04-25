@@ -16,8 +16,10 @@ public class Frigate extends MarineVehicle implements IEngine {
 
     public Frigate(String modelName, int MaxNumberPassenger, double maxSpeed) {
         super(modelName, 0, MaxNumberPassenger, maxSpeed, "Israel");
-        SetAverageFuelConsumption(500);
-        SetLifeTimeEngine(4);
+        this.averageFuelConsumption = 500;
+        //SetAverageFuelConsumption(500);
+        this.lifeTimeEngine = 4;
+        //SetLifeTimeEngine(4);
     }
 
 
