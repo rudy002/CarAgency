@@ -1,3 +1,9 @@
+/*
+Sarah Khalifa : 342513066
+Rudy Haddad : 336351481
+ */
+
+
 package MainClass;
 
 //Import packages
@@ -163,18 +169,45 @@ public class Main {
 
                 }//BUY VEHICLE
                 case 2 -> {
-                    int choice, countnum;
-                    Scanner input1 = new Scanner(System.in);
+                    int num;
+                    double distance;
+                    PrintSpecificTypeFromListOrAll(vehicleList, 5);
+                    //faire un copier coller du debut du cas un pour entrer les pratim d'un vehicle
+
+                    Scanner sc = new Scanner(System.in);
+
+                    System.out.println("Enter the number of the vehicle that you want to check:");
+                    num = sc.nextInt();
+                    if(num < 1 || num > vehicleList.size()) {
+                        System.out.println("Error: The vehicle doesn't exist");
+                    }
+
+                    vehicleList.get(num-1).toString();
+
                     do {
-                        countnum = PrintAllVehicle(vehicleList);
-                        choice = input1.nextInt();
-                    } while (choice > countnum && choice < 0);
+                        System.out.println("Enter the distance you want to travel for the test");
+                        distance = sc.nextDouble();
+                    } while (distance < 0);
+
+                    if (vehicleList.get(num-1).getTotalDistance() + distance < 100000) {
+                        vehicleList.get(num-1).TravelDistance(distance);
+                        System.out.println("You can travel with this vehicle!");
+                    } else
+                        System.out.println("You can't travel with this vehicle!");
 
                 }//TAKE VEHICLE FOR TEST
                 case 3 -> {
+                    boolean checking=false;
                     for (Vehicle i : vehicleList) {
-                        i.setTotalDistance(0);
+                        if(i.setTotalDistance(0)){
+                            checking = true;
+                        }
+                        else
+                            checking = false;
                     }
+                    if (checking){System.out.println("Successfully initialized");}
+                    else {
+                        System.out.println("It's not been initialized.");}
                 }//RESET TOTAL DISTANCE OF ALL VEHICLE.
                 case 4 -> {
                     Scanner input1 = new Scanner(System.in);
@@ -301,6 +334,4 @@ public class Main {
         }
 
     }//print vehicles by type of all vehicle.
-
-
 }

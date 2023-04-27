@@ -1,3 +1,8 @@
+/*
+Sarah Khalifa : 342513066
+Rudy Haddad : 336351481
+ */
+
 package abstractClass;
 
 public abstract class MarineVehicle extends Vehicle {
@@ -10,6 +15,7 @@ public abstract class MarineVehicle extends Vehicle {
 
     public MarineVehicle(String modelName, double totalDistance, int MaxNumberPassenger, double maxSpeed, String flag) {
         super(modelName, totalDistance, MaxNumberPassenger, maxSpeed);
+        this.WindDirection = false;
         this.flag = flag;
     }
 

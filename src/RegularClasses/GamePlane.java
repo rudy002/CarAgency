@@ -1,3 +1,8 @@
+/*
+Sarah Khalifa : 342513066
+Rudy Haddad : 336351481
+ */
+
 package RegularClasses;
 
 //import packages
@@ -13,7 +18,6 @@ public class GamePlane extends AirVehicle implements INotEngine {
     public GamePlane() {
         super("Toy", 0, 0, 10, AirVehicleType.civilian);
         setSourceOfEnergy("Manual");
-        scoreEnergy(scoreEnergy.A);
     }
 
     @Override //override the method from the interface
@@ -32,13 +36,8 @@ public class GamePlane extends AirVehicle implements INotEngine {
     }
 
     @Override //override the method from the interface
-    public Boolean scoreEnergy(scoreEnergy score) {
-        if(score == scoreEnergy.A) {
-            return true;
-        }
-        else {
-            return false;
-        }
+    public scoreEnergy scoreEnergy() {
+        return scoreEnergy.A;
     }
 
 

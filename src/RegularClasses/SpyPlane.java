@@ -1,3 +1,8 @@
+/*
+Sarah Khalifa : 342513066
+Rudy Haddad : 336351481
+ */
+
 package RegularClasses;
 //import packages
 import abstractClass.AirVehicle;
@@ -5,15 +10,8 @@ import abstractClass.INotEngine;
 
 public class SpyPlane extends AirVehicle implements INotEngine {
 
-
-
-
-
     //data members
     private String sourceOfEnergy; // source of energy of the vehicle.
-
-
-
 
 
 
@@ -22,7 +20,6 @@ public class SpyPlane extends AirVehicle implements INotEngine {
         super("classified", 0, 1, 50, AirVehicleType.military);
         this.sourceOfEnergy = sourceOfEnergy;
         //setSourceOfEnergy(sourceOfEnergy);
-        scoreEnergy(scoreEnergy.C);
     }
 
     //getters and setters
@@ -42,13 +39,8 @@ public class SpyPlane extends AirVehicle implements INotEngine {
     }
 
     @Override
-    public Boolean scoreEnergy(scoreEnergy score) {
-        if(score == scoreEnergy.C) {
-            return true;
-        }
-        else {
-            return false;
-        }
+    public scoreEnergy scoreEnergy() {
+        return scoreEnergy.C;
     }
 
 

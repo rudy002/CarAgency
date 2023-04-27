@@ -1,3 +1,8 @@
+/*
+Sarah Khalifa : 342513066
+Rudy Haddad : 336351481
+ */
+
 package abstractClass;
 
 public abstract class Vehicle {
@@ -24,7 +29,7 @@ public abstract class Vehicle {
 
     //getters and setters
     public boolean setTotalDistance(double totalDistance) {
-        if (totalDistance >0) {
+        if (totalDistance >=0) {
             this.totalDistance = totalDistance;
             return true;
         }
