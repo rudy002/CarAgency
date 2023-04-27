@@ -60,6 +60,6 @@ public abstract class LandVehicle extends Vehicle{
 
     @Override
     public String toString() {
-        return super.toString() + ", Kind of Land : " + getType() + ",  number of wheels" + getNumberOfWheels();
+        return super.toString() + "\nKind of Land : " + getType() + "\nNumber of wheels" + getNumberOfWheels();
     }
 }

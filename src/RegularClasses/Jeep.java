@@ -29,8 +29,8 @@ public class Jeep extends LandVehicle implements IEngine, IComercial {
     }
 
     @Override //from interface ICommercial
-    public String typeLicense() {
-        return typeLicense.mini.toString();
+    public typeLicense typeLicense() {
+        return typeLicense.mini;
     }
 
 
@@ -87,7 +87,7 @@ public class Jeep extends LandVehicle implements IEngine, IComercial {
 
     @Override
     public String toString() {
-        return "Jeep : " + super.toString() + ",  Average Fuel Consummation : " + getAverageFuelConsumption() + ", life time of Engine : " + getLifeTimeEngine() + ", type of license : " + typeLicense();
+        return "Jeep : " + super.toString() + "\nAverage Fuel Consummation : " + getAverageFuelConsumption() + "\nLife time of Engine : " + getLifeTimeEngine() + "\nType of license : MINI" + "\n\n";
     }
 
 }

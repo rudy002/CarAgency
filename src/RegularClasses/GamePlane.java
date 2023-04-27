@@ -59,6 +59,6 @@ public class GamePlane extends AirVehicle implements INotEngine {
 
     @Override
     public String toString() {
-        return "GamePlane :  : " + super.toString() + ", source of energy : " + getSourceOfEnergy() + ", score energy : A";
+        return "GamePlane : " + super.toString() + "\nSource of energy : " + getSourceOfEnergy() + "\nScore energy : A" + "\n\n";
     }
 }

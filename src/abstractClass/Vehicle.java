@@ -76,7 +76,7 @@ public abstract class Vehicle {
 
     @Override
     public String toString() {
-        return "Model name: " + getModelName() + ", Total distance: " + getTotalDistance() + ", Maximum number of passengers: " + getMaxNumberPassenger() + ", Maximum speed: " + getMaxSpeed();
+        return "Model name: " + getModelName() + "\nTotal distance: " + getTotalDistance() + "\nMaximum number of passengers: " + getMaxNumberPassenger() + "\nMaximum speed: " + getMaxSpeed();
     }
 }
 

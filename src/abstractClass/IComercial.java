@@ -8,7 +8,7 @@ package abstractClass;
 public interface IComercial {
 
     public static enum typeLicense { // enum for the type of license of the vehicle.
-        mini, limit, unlimit;
+        mini, limit, unlimited;
     }
-    public String typeLicense(); // set the type of license of the vehicle.
+    public typeLicense typeLicense(); // set the type of license of the vehicle.
 }

@@ -64,7 +64,7 @@ public abstract class MarineVehicle extends Vehicle {
         String wind;
         if (getWindDirection()){wind = "same direction of the wind";}
         else {wind = "against direction of the wind";}
-        return super.toString() + ", " + wind + ", Nationality Flag : " + getFlag();
+        return super.toString()+ "\n" + wind + "\n'Nationality Flag : " + getFlag();
     }
 
 

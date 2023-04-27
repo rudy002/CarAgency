@@ -18,7 +18,6 @@ public class Frigate extends MarineVehicle implements IEngine {
     private double lifeTimeEngine; // lifetime of the engine.
 
     //Constructor
-
     public Frigate(String modelName, int MaxNumberPassenger, double maxSpeed) {
         super(modelName, 0, MaxNumberPassenger, maxSpeed, "Israel");
         this.averageFuelConsumption = 500;
@@ -63,6 +62,7 @@ public class Frigate extends MarineVehicle implements IEngine {
         return lifeTimeEngine;
     }
 
+    //Methods
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
@@ -81,7 +81,7 @@ public class Frigate extends MarineVehicle implements IEngine {
 
     @Override
     public String toString() {
-        return "Frigate : " + super.toString() + ", Average Fuel Consummation : " + getAverageFuelConsumption() + "LifeTime of Engine : " + getLifeTimeEngine();
+        return "Frigate : " + super.toString() + "\nAverage Fuel Consummation : " + getAverageFuelConsumption() + "\nLifeTime of Engine : " + getLifeTimeEngine() + "\n\n";
     }
 
 

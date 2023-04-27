@@ -22,7 +22,7 @@ public class SpyPlane extends AirVehicle implements INotEngine {
         //setSourceOfEnergy(sourceOfEnergy);
     }
 
-    //getters and setters
+    //getters, setters and methods
 
     @Override
     public boolean setSourceOfEnergy(String source) {
@@ -62,6 +62,6 @@ public class SpyPlane extends AirVehicle implements INotEngine {
 
     @Override
     public String toString() {
-        return "SpyPlane : " + super.toString() + ", Source of energy :" + getSourceOfEnergy() + "Score Energy : C";
+        return "SpyPlane : " + super.toString() + "\nSource of energy :" + getSourceOfEnergy() + "\nScore Energy : C"+ "\n\n";
     }
 }
