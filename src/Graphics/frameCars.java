@@ -1,8 +1,11 @@
 package Graphics;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class frameCars extends JFrame {
+
+public class frameCars extends JFrame implements ActionListener {
 
     public static void main(String[] args) {
         frameCars frame = new frameCars();
@@ -11,6 +14,16 @@ public class frameCars extends JFrame {
 
 
     //data members
+
+    //all Jbuttons
+    private final JButton buttonJeep = new JButton();
+    private final JButton buttonFrigate = new JButton();
+    private final JButton buttonGamePlane = new JButton();
+    private final JButton buttonSpyPlane = new JButton();
+    private final JButton buttonBicycle = new JButton();
+    private final JButton buttonCruise = new JButton();
+    private final JButton buttonAmphibious = new JButton();
+    private final JButton buttonMenu = new JButton();
 
 
 
@@ -48,16 +61,15 @@ public class frameCars extends JFrame {
         JLabel labelAmphibious = new JLabel("Amphibious");
         JLabel labelMenu = new JLabel("Menu");
 
-        //all Jbuttons
-
-        JButton buttonJeep = new JButton();
-        JButton buttonFrigate = new JButton();
-        JButton buttonGamePlane = new JButton();
-        JButton buttonSpyPlane = new JButton();
-        JButton buttonBicycle = new JButton();
-        JButton buttonCruise = new JButton();
-        JButton buttonAmphibious = new JButton();
-        JButton buttonMenu = new JButton();
+//        //all Jbuttons
+//        JButton buttonJeep = new JButton();
+//        JButton buttonFrigate = new JButton();
+//        JButton buttonGamePlane = new JButton();
+//        JButton buttonSpyPlane = new JButton();
+//        JButton buttonBicycle = new JButton();
+//        JButton buttonCruise = new JButton();
+//        JButton buttonAmphibious = new JButton();
+//        JButton buttonMenu = new JButton();
 
 
         //add all panels
@@ -70,7 +82,8 @@ public class frameCars extends JFrame {
         panel.add(newPanel(iconAmphibious, labelAmphibious, buttonAmphibious));
         panel.add(newPanel(iconMenu, labelMenu, buttonMenu));
 
-
+        //action listeners
+        buttonMenu.addActionListener(this);
 
 
 
@@ -90,6 +103,14 @@ public class frameCars extends JFrame {
         panel.add(button);
         panel.add(label);
         return panel;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == buttonMenu) {
+            // Open new frame for menu
+            this.dispose(); // Close current frame
+            MenuFrame menuFrame = new MenuFrame();
+        }
     }
 
 
