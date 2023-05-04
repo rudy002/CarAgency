@@ -3,19 +3,33 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
+//import my packages
+import RegularClasses.*;
+import abstractClass.*;
+import RegularClasses.*;
 
 public class frameCars extends JFrame implements ActionListener {
 
+    //data members
+    static ArrayList<Vehicle> vehicleList; //np modifier (only for package gui)
+
     public static void main(String[] args) {
+
+        vehicleList = new ArrayList<Vehicle>(); //create new array list
+        //create new object
         frameCars frame = new frameCars();
+
+
+
     }
 
 
 
     //data members
 
-    //all Jbuttons
+    //all Buttons
     private final JButton buttonJeep = new JButton();
     private final JButton buttonFrigate = new JButton();
     private final JButton buttonGamePlane = new JButton();
@@ -84,6 +98,13 @@ public class frameCars extends JFrame implements ActionListener {
 
         //action listeners
         buttonMenu.addActionListener(this);
+        buttonJeep.addActionListener(this);
+        buttonFrigate.addActionListener(this);
+        buttonGamePlane.addActionListener(this);
+        buttonSpyPlane.addActionListener(this);
+        buttonBicycle.addActionListener(this);
+        buttonCruise.addActionListener(this);
+        buttonAmphibious.addActionListener(this);
 
 
 
@@ -111,6 +132,42 @@ public class frameCars extends JFrame implements ActionListener {
             this.dispose(); // Close current frame
             MenuFrame menuFrame = new MenuFrame();
         }
+        if (e.getSource() == buttonJeep) {
+            // Open new frame for menu
+            FrameForEachVehicleDetails detailsForJeep = new FrameForEachVehicleDetails("Jeep");
+            this.dispose(); // Close current frame
+        }
+        if (e.getSource() == buttonFrigate) {
+            // Open new frame for menu
+            FrameForEachVehicleDetails detailsForFrigate = new FrameForEachVehicleDetails("Frigate");
+            this.dispose(); // Close current frame
+        }
+        if (e.getSource() == buttonGamePlane) {
+            // Open new frame for menu
+            FrameForEachVehicleDetails detailsForGamePlane = new FrameForEachVehicleDetails("GamePlane");
+            this.dispose(); // Close current frame
+        }
+        if (e.getSource() == buttonSpyPlane) {
+            // Open new frame for menu
+            FrameForEachVehicleDetails detailsForSpyPlane = new FrameForEachVehicleDetails("SpyPlane");
+            this.dispose(); // Close current frame
+        }
+        if (e.getSource() == buttonBicycle) {
+            // Open new frame for menu
+            FrameForEachVehicleDetails detailsForBicycle = new FrameForEachVehicleDetails("Bicycle");
+            this.dispose(); // Close current frame
+        }
+        if (e.getSource() == buttonCruise) {
+            // Open new frame for menu
+            FrameForEachVehicleDetails detailsForCruise = new FrameForEachVehicleDetails("CruiseShip");
+            this.dispose(); // Close current frame
+        }
+if (e.getSource() == buttonAmphibious) {
+            // Open new frame for menu
+            FrameForEachVehicleDetails detailsForAmphibious = new FrameForEachVehicleDetails("Amphibious");
+            this.dispose(); // Close current frame
+        }
+
     }
 
 

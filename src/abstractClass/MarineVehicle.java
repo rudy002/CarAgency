@@ -21,11 +21,12 @@ public abstract class MarineVehicle extends Vehicle {
 
     //getters and setters
     public boolean setWindDirection(boolean windDirection) {
-        try {
+        if (this.WindDirection == windDirection) {
+            return false;
+        }
+        else {
             this.WindDirection = windDirection;
             return true;
-        } catch (Exception e) {
-            return false;
         }
     }
 
