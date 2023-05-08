@@ -57,7 +57,7 @@ public class CruiseShip extends MarineVehicle implements IEngine, IComercial {
 
     @Override
     public String toString() {
-        return super.toString() + "\nType of license: " + typeLicense() + "\nAverage fuel consumption: " + getAverageFuelConsumption() + "\nLife time of the engine: " + getLifeTimeEngine();
+        return super.toString() + "\nType of license: " + typeLicense() + "\nAverage fuel consumption: " + getAverageFuelConsumption() + "\nLife time of the engine: " + getLifeTimeEngine() + "\n";
     }
 
     @Override

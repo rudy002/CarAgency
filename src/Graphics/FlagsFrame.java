@@ -1,4 +1,8 @@
 package Graphics;
+import RegularClasses.Amphibious;
+import abstractClass.MarineVehicle;
+import abstractClass.Vehicle;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -10,7 +14,7 @@ public class FlagsFrame extends JFrame implements ActionListener {
 
         public FlagsFrame() {
             super("Flags");
-            setSize(600, 400);
+            setSize(1400, 1000);
             setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
             JPanel panel = new JPanel();
@@ -49,18 +53,39 @@ public class FlagsFrame extends JFrame implements ActionListener {
             String flagName = e.getActionCommand();
             // Do something with the flagName
             JOptionPane.showMessageDialog(this, "You selected the " + flagName + " flag.");
-            if (source == flagButtons[0]){} //Israel
-            if (source == flagButtons[1]){} //UnitedState
-            if (source == flagButtons[2]){} //Germany
-            if (source == flagButtons[3]){} //Greece
-            if (source == flagButtons[4]){} //Somalia
-            if (source == flagButtons[5]){} //JollyRoger
+            if (source == flagButtons[0]){
+                changeFlag("Israel");
+            } //Israel
+            if (source == flagButtons[1]){
+                changeFlag("UnitedState");
+            } //UnitedState
+            if (source == flagButtons[2]){
+                changeFlag("Germany");
+            } //Germany
+            if (source == flagButtons[3]){
+                changeFlag("Greece");
+            } //Greece
+            if (source == flagButtons[4]){
+                changeFlag("Somalia");
+            } //Somalia
+            if (source == flagButtons[5]){
+                changeFlag("JollyRoger");
+            } //JollyRoger
 
+            this.dispose();
+            MenuFrame frame = new MenuFrame();
+
+        }
+
+            public void changeFlag(String flagName) {
+                for (Vehicle i : frameCars.vehicleList) {
+                    if (i instanceof MarineVehicle)
+                        ((MarineVehicle) i).setFlag(flagName);
+                    else if (i instanceof Amphibious)
+                        ((Amphibious) i).setFlag(flagName);
+                }
             }
 
 
-        public static void main(String[] args) {
-            new FlagsFrame();
-        }
     }
 

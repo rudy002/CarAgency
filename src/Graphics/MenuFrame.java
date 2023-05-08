@@ -1,9 +1,13 @@
 package Graphics;
+import abstractClass.Vehicle;
+
 import java.awt.Font;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import static java.lang.System.exit;
 
 public class MenuFrame extends JFrame implements ActionListener {
 
@@ -105,23 +109,28 @@ public class MenuFrame extends JFrame implements ActionListener {
             this.dispose();
         }
         if (source == buyVehicleButton) {
+            AllVehicles allVehicles = new AllVehicles();
             for(Object vehicle : frameCars.vehicleList ){
                 System.out.println(vehicle.toString());
             }
             //this.dispose();
         }
         if (source == takeVehicleButton) {
-            this.dispose();
-        }
+            AllVehicles allVehicles = new AllVehicles();
+            }
+            //this.dispose();
         if (source == resetDistanceButton) {
-            this.dispose();
+            for (Vehicle i: frameCars.vehicleList) {
+                i.setTotalDistance(0);
+            }
+
         }
         if (source == changeFlagButton) {
             FlagsFrame flagsFrame = new FlagsFrame();
             this.dispose();
         }
         if (source == exitButton) {
-            this.dispose();
+            exit(0);
         }
     }
 

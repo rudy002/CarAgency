@@ -26,7 +26,7 @@ public class FrameForEachVehicleDetails extends JFrame implements ActionListener
     JLabel imageLabel;
     String vehicleType;
     private JComboBox<Double> comboBoxFuel, comboBoxLifeTime, comboBoxSpeed ;
-    private JComboBox<Integer> comboBoxPassengers;
+    private JComboBox<Integer> comboBoxPassengers, comboBoxWheels;
     private JComboBox<String> comboBoxKindOfLand, comboBoxFlag;
 
 
@@ -42,8 +42,7 @@ public class FrameForEachVehicleDetails extends JFrame implements ActionListener
         setSize(1000, 10000); //size frame
         setLocationRelativeTo(null); //center the frame
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setVisible(true);
-        System.out.println(vehicleType);
+        setVisible(true); //show frame
 
         //images
         image1 = new ImageIcon("images/" + vehicleType + "Images/" + vehicleType + "1.png");
@@ -134,7 +133,7 @@ public class FrameForEachVehicleDetails extends JFrame implements ActionListener
                 panel.add(panelKindOfLand());
                 break;
             }
-            case "Cruise": {
+            case "CruiseShip": {
                 //add text fields for model
                 panel.add(panelModel());
                 //combobox MaxPassenger
@@ -143,11 +142,24 @@ public class FrameForEachVehicleDetails extends JFrame implements ActionListener
                 panel.add(panelMaxSpeed(1000));
                 //combobox Flag
                 panel.add(panelFlag());
-                System.out.println(vehicleType + "-------------");
 
                 break;
             }
             case "Amphibious": {
+                imageLabel.setPreferredSize(new Dimension(400, 200));
+                //add text fields for model
+                panel.add(panelModel());
+                //combobox MaxSpeed
+                panel.add(panelMaxSpeed(1000));
+                //combobox number of wheels
+                panel.add(panelNumberOfWheels());
+                //combobox MaxFuel
+                panel.add(panelMaxFuel(100));
+                //combobox lifetime
+                panel.add(panelLifeTime(100));
+                //combobox max number of passenger
+                panel.add(panelMaxPassenger(1000));
+
                 break;
             }
         }
@@ -247,8 +259,20 @@ public class FrameForEachVehicleDetails extends JFrame implements ActionListener
         comboBoxFlag.addItem("Germany");
         comboBoxFlag.addItem("Somalia");
         comboBoxFlag.addItem("Jolly Roger");
-        panelFlag().add(comboBoxFlag);
+        PanelFlag.add(comboBoxFlag);
         return PanelFlag;
+    }
+
+    public JPanel panelNumberOfWheels(){
+        JPanel panelNumberOfWheels = new JPanel();
+        JLabel labelNumberOfWheels = new JLabel("Choose Number Of Wheels");
+        panelNumberOfWheels.add(labelNumberOfWheels);
+        comboBoxWheels = new JComboBox<Integer>();
+        for (int i = 1; i <= 20; i++) {
+            comboBoxWheels.addItem(i);
+        }
+        panelNumberOfWheels.add(comboBoxWheels);
+        return panelNumberOfWheels;
     }
 
     @Override
@@ -302,6 +326,7 @@ public class FrameForEachVehicleDetails extends JFrame implements ActionListener
                     break;
                 }
                 case "Amphibious": {
+                    frameCars.vehicleList.add(new Amphibious(modelNameField.getText(), (Double) comboBoxSpeed.getSelectedItem(), (Integer) comboBoxWheels.getSelectedItem(), (Double) comboBoxFuel.getSelectedItem(), (Double) comboBoxLifeTime.getSelectedItem(),(Integer) comboBoxPassengers.getSelectedItem(), path));
                     break;
                 }
             }

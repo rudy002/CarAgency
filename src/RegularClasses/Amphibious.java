@@ -15,11 +15,11 @@ public class Amphibious extends Vehicle implements IEngine, IMarine, ILand{
     //constructor
 
     public Amphibious(String modelName, double maxSpeed, int numberOfWheels, double averageFuelConsumption, double lifeTimeEngine,int MaxNumberPassengers, String path) {
-        super(modelName, 0, MaxNumberPassengers, maxSpeed, path);
+        super(modelName, 10, MaxNumberPassengers, maxSpeed, path);
         this.averageFuelConsumption = averageFuelConsumption;
         this.lifeTimeEngine = lifeTimeEngine;
-        LandVehicle = new LandVehicle(modelName, 0, MaxNumberPassengers, maxSpeed , abstractClass.LandVehicle.kindOfLand.paved, numberOfWheels, path);
-        MarineVehicle = new MarineVehicle(modelName, 0, MaxNumberPassengers, maxSpeed, "Israel", path);
+        LandVehicle = new LandVehicle(modelName, 10, MaxNumberPassengers, maxSpeed , abstractClass.LandVehicle.kindOfLand.paved, numberOfWheels, path);
+        MarineVehicle = new MarineVehicle(modelName, 10, MaxNumberPassengers, maxSpeed, "Israel", path);
     }
 
     //getter and setter
@@ -101,7 +101,11 @@ public class Amphibious extends Vehicle implements IEngine, IMarine, ILand{
 
     @Override
     public String toString() {
-        return super.toString() + "Average Fuel Consumption: " + this.averageFuelConsumption + "\n" + "Life Time Engine: " + this.lifeTimeEngine + "\n" + "Land Vehicle: " + this.LandVehicle.toString() + "\n" + "Marine Vehicle: " + this.MarineVehicle.toString();
+        String wind = "Angainst direction of wind";
+        if(getWindDirection()) {
+            wind = "With direction of wind";
+        }
+        return "Amphibious : " + super.toString() + "\nAverage Fuel Consumption: " + this.averageFuelConsumption + "\n" + "Life Time Engine: " + this.lifeTimeEngine + "\nKind Of Land :" + getType() + "\nNumber Of Wheels: " + getNumberOfWheels() + "\nWind Direction: " + wind + "\nFlag: " + getFlag() + "\n";
     }
 
 }
