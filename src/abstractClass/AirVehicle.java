@@ -16,8 +16,8 @@ public abstract class AirVehicle extends Vehicle {
 
 
     //constructor
-    public AirVehicle(String modelName, double totalDistance, int MaxNumberPassenger, double maxSpeed, AirVehicleType type) {
-        super(modelName, totalDistance, MaxNumberPassenger, maxSpeed);
+    public AirVehicle(String modelName, double totalDistance, int MaxNumberPassenger, double maxSpeed, AirVehicleType type, String path) {
+        super(modelName, totalDistance, MaxNumberPassenger, maxSpeed, path);
         this.type = type;
         //setType(type);
     }

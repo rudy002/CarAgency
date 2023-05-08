@@ -13,8 +13,8 @@ public class MarineVehicle extends Vehicle {
     private boolean WindDirection; // wind direction of the vehicle.
     //need to add other data member.
 
-    public MarineVehicle(String modelName, double totalDistance, int MaxNumberPassenger, double maxSpeed, String flag) {
-        super(modelName, totalDistance, MaxNumberPassenger, maxSpeed);
+    public MarineVehicle(String modelName, double totalDistance, int MaxNumberPassenger, double maxSpeed, String flag, String path) {
+        super(modelName, totalDistance, MaxNumberPassenger, maxSpeed, path);
         this.WindDirection = false;
         this.flag = flag;
     }

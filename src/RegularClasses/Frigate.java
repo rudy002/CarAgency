@@ -17,8 +17,8 @@ public class Frigate extends MarineVehicle implements IEngine {
     private double lifeTimeEngine; // lifetime of the engine.
 
     //Constructor
-    public Frigate(String modelName, int MaxNumberPassenger, double maxSpeed) {
-        super(modelName, 0, MaxNumberPassenger, maxSpeed, "Israel");
+    public Frigate(String modelName, int MaxNumberPassenger, double maxSpeed, String path) {
+        super(modelName, 0, MaxNumberPassenger, maxSpeed, "Israel", path);
         this.averageFuelConsumption = 500;
         //SetAverageFuelConsumption(500);
         this.lifeTimeEngine = 4;

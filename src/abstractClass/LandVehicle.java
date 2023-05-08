@@ -15,8 +15,8 @@ public  class LandVehicle extends Vehicle{
     private int numberOfWheels; // number of wheels of the vehicle.
 
     //constructor
-    public LandVehicle(String modelName, double totalDistance, int MaxNumberPassenger, double maxSpeed, kindOfLand type, int numberOfWheels) {
-        super(modelName, totalDistance, MaxNumberPassenger, maxSpeed);
+    public LandVehicle(String modelName, double totalDistance, int MaxNumberPassenger, double maxSpeed, kindOfLand type, int numberOfWheels, String path) {
+        super(modelName, totalDistance, MaxNumberPassenger, maxSpeed, path);
         this.type = type;
         //setType(type);
         this.numberOfWheels = numberOfWheels;
@@ -60,6 +60,6 @@ public  class LandVehicle extends Vehicle{
 
     @Override
     public String toString() {
-        return super.toString() + "\nKind of Land : " + getType() + "\nNumber of wheels" + getNumberOfWheels();
+        return super.toString() + "\nKind of Land : " + getType() + "\nNumber of wheels : " + getNumberOfWheels();
     }
 }

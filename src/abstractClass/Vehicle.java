@@ -14,12 +14,15 @@ public abstract class Vehicle {
     private int MaxNumberPassenger; // maximum number of passengers the vehicle can carry
     private double maxSpeed; // maximum speed of the vehicle
 
+    private String path;
+
     //Constructors
-    public Vehicle(String modelName, double totalDistance, int MaxNumberPassenger, double maxSpeed) {
+    public Vehicle(String modelName, double totalDistance, int MaxNumberPassenger, double maxSpeed, String path) {
         this.modelName = modelName;
         this.totalDistance = totalDistance;
         this.MaxNumberPassenger = MaxNumberPassenger;
         this.maxSpeed = maxSpeed;
+        this.path = path;
     }
 
     public void TravelDistance(double distance){
@@ -52,6 +55,15 @@ public abstract class Vehicle {
 
     public double getMaxSpeed() {
         return maxSpeed;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public boolean setPath(String path) {
+        this.path = path;
+        return true;
     }
 
 

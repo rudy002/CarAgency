@@ -15,8 +15,8 @@ public class GamePlane extends AirVehicle implements INotEngine {
     private String sourceOfEnergy; // source of energy of the vehicle.
 
     //constructor
-    public GamePlane() {
-        super("Toy", 0, 0, 10, AirVehicleType.civilian);
+    public GamePlane(String path){
+        super("Toy", 0, 0, 10, AirVehicleType.civilian, path);
         setSourceOfEnergy("Manual");
     }
 

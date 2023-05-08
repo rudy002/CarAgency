@@ -12,8 +12,8 @@ public class CruiseShip extends MarineVehicle implements IEngine, IComercial {
     private double averageFuelConsumption; // average fuel consumption of the vehicle.
     private double lifeTimeEngine; // lifetime of the engine.
 
-    public CruiseShip(String modelName, int MaxNumberPassenger, double maxSpeed, String flag) {
-        super(modelName, 0, MaxNumberPassenger, maxSpeed, flag);
+    public CruiseShip(String modelName, int MaxNumberPassenger, double maxSpeed, String flag, String path) {
+        super(modelName, 0, MaxNumberPassenger, maxSpeed, flag, path);
         setWindDirection(true);
 
     }

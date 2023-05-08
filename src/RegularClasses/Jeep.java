@@ -20,8 +20,8 @@ public class Jeep extends LandVehicle implements IEngine, IComercial {
 
 
     //Constructor
-    public Jeep(String modelName, double maxSpeed, double averageFuelConsumption, double lifeTimeEngine) {
-        super(modelName, 0, 5, maxSpeed, kindOfLand.dirt, 4);
+    public Jeep(String modelName, double maxSpeed, double averageFuelConsumption, double lifeTimeEngine, String path) {
+        super(modelName, 0, 5, maxSpeed, kindOfLand.dirt, 4, path);
         this.lifeTimeEngine = lifeTimeEngine;
 //        SetLifeTimeEngine(lifeTimeEngine);
         this.averageFuelConsumption = averageFuelConsumption;

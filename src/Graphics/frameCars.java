@@ -75,15 +75,6 @@ public class frameCars extends JFrame implements ActionListener {
         JLabel labelAmphibious = new JLabel("Amphibious");
         JLabel labelMenu = new JLabel("Menu");
 
-//        //all Jbuttons
-//        JButton buttonJeep = new JButton();
-//        JButton buttonFrigate = new JButton();
-//        JButton buttonGamePlane = new JButton();
-//        JButton buttonSpyPlane = new JButton();
-//        JButton buttonBicycle = new JButton();
-//        JButton buttonCruise = new JButton();
-//        JButton buttonAmphibious = new JButton();
-//        JButton buttonMenu = new JButton();
 
 
         //add all panels

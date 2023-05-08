@@ -14,12 +14,12 @@ public class Amphibious extends Vehicle implements IEngine, IMarine, ILand{
 
     //constructor
 
-    public Amphibious(String modelName, double maxSpeed, int numberOfWheels, double averageFuelConsumption, double lifeTimeEngine,int MaxNumberPassengers) {
-        super(modelName, 0, MaxNumberPassengers, maxSpeed);
+    public Amphibious(String modelName, double maxSpeed, int numberOfWheels, double averageFuelConsumption, double lifeTimeEngine,int MaxNumberPassengers, String path) {
+        super(modelName, 0, MaxNumberPassengers, maxSpeed, path);
         this.averageFuelConsumption = averageFuelConsumption;
         this.lifeTimeEngine = lifeTimeEngine;
-        LandVehicle = new LandVehicle(modelName, 0, MaxNumberPassengers, maxSpeed , abstractClass.LandVehicle.kindOfLand.paved, numberOfWheels);
-        MarineVehicle = new MarineVehicle(modelName, 0, MaxNumberPassengers, maxSpeed, "Israel");
+        LandVehicle = new LandVehicle(modelName, 0, MaxNumberPassengers, maxSpeed , abstractClass.LandVehicle.kindOfLand.paved, numberOfWheels, path);
+        MarineVehicle = new MarineVehicle(modelName, 0, MaxNumberPassengers, maxSpeed, "Israel", path);
     }
 
     //getter and setter

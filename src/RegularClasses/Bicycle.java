@@ -8,8 +8,8 @@ public class Bicycle extends LandVehicle implements INotEngine {
     //data members
     private String sourceOfEnergy; // source of energy of the vehicle.
 
-    public Bicycle(String modelName, kindOfLand type) {
-        super(modelName, 0, 1, 15, type, 2);
+    public Bicycle(String modelName, kindOfLand type, String path) {
+        super(modelName, 0, 1, 15, type, 2, path);
         this.sourceOfEnergy = "Manual";
     }
 

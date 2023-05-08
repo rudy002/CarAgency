@@ -1,6 +1,7 @@
 package Graphics;
 
 import RegularClasses.*;
+import abstractClass.LandVehicle;
 import abstractClass.Vehicle;
 
 import javax.swing.*;
@@ -12,6 +13,8 @@ public class FrameForEachVehicleDetails extends JFrame implements ActionListener
 
     //data members
     private JTextField modelNameField;
+
+    private JTextField sourceOfEnergyField;
     private String modelName;
     private JTextField maxSpeedField;
     private JTextField AverageFuelConsumptionField;
@@ -22,11 +25,10 @@ public class FrameForEachVehicleDetails extends JFrame implements ActionListener
     private JRadioButton radio1, radio2, radio3, validateButton;
     JLabel imageLabel;
     String vehicleType;
-
-    private JComboBox<Double> comboBoxSpeed;
-    private JComboBox<Double> comboBoxFuel;
-    private JComboBox<Double> comboBoxLifeTime;
+    private JComboBox<Double> comboBoxFuel, comboBoxLifeTime, comboBoxSpeed ;
     private JComboBox<Integer> comboBoxPassengers;
+    private JComboBox<String> comboBoxKindOfLand, comboBoxFlag;
+
 
     private JButton confirmButton;
 
@@ -41,6 +43,7 @@ public class FrameForEachVehicleDetails extends JFrame implements ActionListener
         setLocationRelativeTo(null); //center the frame
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
+        System.out.println(vehicleType);
 
         //images
         image1 = new ImageIcon("images/" + vehicleType + "Images/" + vehicleType + "1.png");
@@ -96,7 +99,6 @@ public class FrameForEachVehicleDetails extends JFrame implements ActionListener
         panel.add(confirmButton);
 
 
-
         switch (vehicleType) {
             case "Jeep": {
 
@@ -120,18 +122,29 @@ public class FrameForEachVehicleDetails extends JFrame implements ActionListener
                 break;
             }
             case "GamePlane": {
-
-
+                //no button needed for him
                 break;
             }
             case "SpyPlane": {
-
+                panel.add(panelSourceOfEnergy());
                 break;
             }
             case "Bicycle": {
+                panel.add(panelModel());
+                panel.add(panelKindOfLand());
                 break;
             }
             case "Cruise": {
+                //add text fields for model
+                panel.add(panelModel());
+                //combobox MaxPassenger
+                panel.add((panelMaxPassenger(10000)));
+                //combobox MaxSpeed
+                panel.add(panelMaxSpeed(1000));
+                //combobox Flag
+                panel.add(panelFlag());
+                System.out.println(vehicleType + "-------------");
+
                 break;
             }
             case "Amphibious": {
@@ -146,9 +159,9 @@ public class FrameForEachVehicleDetails extends JFrame implements ActionListener
         modelNameField = new JTextField("Enter Model Name", 25);
         panelModel.add(modelNameField);
         modelNameField.addActionListener(this);
-        validateButton = new JRadioButton("Confirm");
-        panelModel.add(validateButton);
-        validateButton.addActionListener(this);
+//        validateButton = new JRadioButton("Confirm");
+//        panelModel.add(validateButton);
+//        validateButton.addActionListener(this);
         return panelModel;
 
     }
@@ -201,6 +214,43 @@ public class FrameForEachVehicleDetails extends JFrame implements ActionListener
         return panelMaxPassenger;
     }
 
+    public JPanel panelSourceOfEnergy(){
+        JPanel panelSourceOfEnergy = new JPanel();
+        sourceOfEnergyField = new JTextField("Enter Source of Energy", 25);
+        panelSourceOfEnergy.add(sourceOfEnergyField);
+        sourceOfEnergyField.addActionListener(this);
+//        validateButton = new JRadioButton("Confirm");
+//        panelSourceOfEnergy.add(validateButton);
+//        validateButton.addActionListener(this);
+        return panelSourceOfEnergy;
+    }
+
+    public JPanel panelKindOfLand(){
+        JPanel panelKindOfLand = new JPanel();
+        JLabel labelKindOfLand = new JLabel("Choose Kind of Land");
+        panelKindOfLand.add(labelKindOfLand);
+        comboBoxKindOfLand = new JComboBox<String>();
+        comboBoxKindOfLand.addItem("Paved");
+        comboBoxKindOfLand.addItem("Dirt");
+        panelKindOfLand.add(comboBoxKindOfLand);
+        return panelKindOfLand;
+    }
+
+    public JPanel panelFlag(){
+        JPanel PanelFlag = new JPanel();
+        JLabel labelFlag = new JLabel("Choose Flag");
+        PanelFlag.add(labelFlag);
+        comboBoxFlag = new JComboBox<String>();
+        comboBoxFlag.addItem("Israel");
+        comboBoxFlag.addItem("United States");
+        comboBoxFlag.addItem("Greece");
+        comboBoxFlag.addItem("Germany");
+        comboBoxFlag.addItem("Somalia");
+        comboBoxFlag.addItem("Jolly Roger");
+        panelFlag().add(comboBoxFlag);
+        return PanelFlag;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
@@ -216,15 +266,48 @@ public class FrameForEachVehicleDetails extends JFrame implements ActionListener
             imageLabel.setIcon(image3);
             path = "images/" + vehicleType + "Images/" + vehicleType + "3.png";
         }
-        if (source == validateButton){
-            modelName = modelNameField.getText();
-        }
+//        if (source == validateButton){
+//            modelName = modelNameField.getText();
+//        }
         if (source == comboBoxSpeed){
             double selectValue = (double) comboBoxSpeed.getSelectedItem();
         }
         if(source == confirmButton){
+            switch (vehicleType) {
+                case "Jeep": {
+                    frameCars.vehicleList.add(new Jeep(modelNameField.getText(), (Double)comboBoxSpeed.getSelectedItem(), (Double) comboBoxFuel.getSelectedItem(), (Double) comboBoxLifeTime.getSelectedItem(), path));
+                    break;
+                }
+                case "Frigate": {
+                    frameCars.vehicleList.add(new Frigate(modelNameField.getText(), (Integer) comboBoxPassengers.getSelectedItem(),(Double)comboBoxSpeed.getSelectedItem(), path));
+                    break;
+                }
+                case "GamePlane": {
+                    frameCars.vehicleList.add((new GamePlane(path)));
+                    break;
+                }
+                case "SpyPlane": {
+                    frameCars.vehicleList.add(new SpyPlane(sourceOfEnergyField.getText(),path));
+                    break;
+                }
+                case "Bicycle": {
+                    if (comboBoxKindOfLand.getSelectedItem() == "Paved")
+                        frameCars.vehicleList.add(new Bicycle(modelNameField.getText(), LandVehicle.kindOfLand.paved,path));
+                    else
+                        frameCars.vehicleList.add(new Bicycle(modelNameField.getText(), LandVehicle.kindOfLand.dirt,path));
+                    break;
+                }
+                case "CruiseShip": {
+                    frameCars.vehicleList.add(new CruiseShip(modelNameField.getText(), (Integer) comboBoxPassengers.getSelectedItem(),(Double)comboBoxSpeed.getSelectedItem(), (String) comboBoxFlag.getSelectedItem() , path));
+                    break;
+                }
+                case "Amphibious": {
+                    break;
+                }
+            }
+
             // essaie du bouton confirm
-            frameCars.vehicleList.add(new Jeep(modelName, (Double)comboBoxSpeed.getSelectedItem(), (Double) comboBoxFuel.getSelectedItem(), (Double) comboBoxLifeTime.getSelectedItem()));
+
             this.dispose();
             frameCars frameCars = new frameCars();
 

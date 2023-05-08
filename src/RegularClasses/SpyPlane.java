@@ -16,8 +16,8 @@ public class SpyPlane extends AirVehicle implements INotEngine {
 
 
     //constructor
-    public SpyPlane(String sourceOfEnergy) {
-        super("classified", 0, 1, 50, AirVehicleType.military);
+    public SpyPlane(String sourceOfEnergy, String path) {
+        super("classified", 0, 1, 50, AirVehicleType.military, path);
         this.sourceOfEnergy = sourceOfEnergy;
         //setSourceOfEnergy(sourceOfEnergy);
     }
