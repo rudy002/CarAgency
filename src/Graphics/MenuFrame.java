@@ -105,7 +105,10 @@ public class MenuFrame extends JFrame implements ActionListener {
             this.dispose();
         }
         if (source == buyVehicleButton) {
-            this.dispose();
+            for(Object vehicle : frameCars.vehicleList ){
+                System.out.println(vehicle.toString());
+            }
+            //this.dispose();
         }
         if (source == takeVehicleButton) {
             this.dispose();

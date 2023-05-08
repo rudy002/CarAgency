@@ -5,7 +5,7 @@ Rudy Haddad : 336351481
 
 package abstractClass;
 
-public abstract class MarineVehicle extends Vehicle {
+public class MarineVehicle extends Vehicle {
 
     //Data members
     private String flag; // flag of the country the vehicle belongs to.

@@ -121,6 +121,7 @@ public class FrameForEachVehicleDetails extends JFrame implements ActionListener
             }
             case "GamePlane": {
 
+
                 break;
             }
             case "SpyPlane": {
@@ -206,33 +207,28 @@ public class FrameForEachVehicleDetails extends JFrame implements ActionListener
         if (source == radio1){
             imageLabel.setIcon(image1);
             path = "images/" + vehicleType + "Images/" + vehicleType + "1.png";
-            System.out.println(path);
         }
         if (source == radio2){
             imageLabel.setIcon(image2);
             path = "images/" + vehicleType + "Images/" + vehicleType + "2.png";
-            System.out.println(path);
         }
         if (source == radio3){
             imageLabel.setIcon(image3);
             path = "images/" + vehicleType + "Images/" + vehicleType + "3.png";
-            System.out.println(path);
         }
         if (source == validateButton){
             modelName = modelNameField.getText();
-            System.out.println("Model Name: " + modelName);
         }
         if (source == comboBoxSpeed){
             double selectValue = (double) comboBoxSpeed.getSelectedItem();
         }
         if(source == confirmButton){
+            // essaie du bouton confirm
             frameCars.vehicleList.add(new Jeep(modelName, (Double)comboBoxSpeed.getSelectedItem(), (Double) comboBoxFuel.getSelectedItem(), (Double) comboBoxLifeTime.getSelectedItem()));
+            this.dispose();
+            frameCars frameCars = new frameCars();
 
 
-            //essaie de fonctionnement de la liste
-            for(Vehicle vehicle : frameCars.vehicleList){
-                System.out.println(vehicle.toString());
-            }
         }
 
 

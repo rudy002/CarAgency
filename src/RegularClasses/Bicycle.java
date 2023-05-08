@@ -35,4 +35,21 @@ public class Bicycle extends LandVehicle implements INotEngine {
     public scoreEnergy scoreEnergy() {
         return scoreEnergy.A;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + "\nSource of energy: " + getSourceOfEnergy();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null || !(obj instanceof Bicycle)) {
+            return false;
+        }
+        if (obj == this) {
+            return true;
+        }
+        Bicycle b = (Bicycle) obj;
+        return super.equals(obj) && getSourceOfEnergy().equals(b.sourceOfEnergy);
+    }
 }

@@ -7,9 +7,9 @@ package abstractClass;
 
 import javax.security.auth.callback.LanguageCallback;
 
-public abstract class LandVehicle extends Vehicle{
+public  class LandVehicle extends Vehicle{
     //Data members
-    protected enum kindOfLand {dirt, paved};
+    public enum kindOfLand {dirt, paved};
 
     private kindOfLand type; // type of the land the vehicle is on.
     private int numberOfWheels; // number of wheels of the vehicle.
