@@ -6,9 +6,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 //import my packages
-import RegularClasses.*;
 import abstractClass.*;
-import RegularClasses.*;
 
 public class frameCars extends JFrame implements ActionListener {
 
@@ -37,7 +35,7 @@ public class frameCars extends JFrame implements ActionListener {
     private final JButton buttonBicycle = new JButton();
     private final JButton buttonCruise = new JButton();
     private final JButton buttonAmphibious = new JButton();
-    private final JButton buttonMenu = new JButton();
+    private final JButton buttonShowAllVehicle = new JButton();
 
 
 
@@ -73,7 +71,7 @@ public class frameCars extends JFrame implements ActionListener {
         JLabel labelBicycle = new JLabel("Bicycle");
         JLabel labelCruise = new JLabel("Cruise");
         JLabel labelAmphibious = new JLabel("Amphibious");
-        JLabel labelMenu = new JLabel("Menu");
+        JLabel labelMenu = new JLabel("Show All Vehicles");
 
 
 
@@ -85,10 +83,10 @@ public class frameCars extends JFrame implements ActionListener {
         panel.add(newPanel(iconBicycle, labelBicycle, buttonBicycle));
         panel.add(newPanel(iconCruise, labelCruise, buttonCruise));
         panel.add(newPanel(iconAmphibious, labelAmphibious, buttonAmphibious));
-        panel.add(newPanel(iconMenu, labelMenu, buttonMenu));
+        panel.add(newPanel(iconMenu, labelMenu, buttonShowAllVehicle));
 
         //action listeners
-        buttonMenu.addActionListener(this);
+        buttonShowAllVehicle.addActionListener(this);
         buttonJeep.addActionListener(this);
         buttonFrigate.addActionListener(this);
         buttonGamePlane.addActionListener(this);
@@ -118,10 +116,11 @@ public class frameCars extends JFrame implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == buttonMenu) {
+        if (e.getSource() == buttonShowAllVehicle) {
             // Open new frame for menu
             this.dispose(); // Close current frame
-            MenuFrame menuFrame = new MenuFrame();
+            OnlySeeAllVehicle onlySeeAllVehicle = new OnlySeeAllVehicle();
+            //MenuFrame menuFrame = new MenuFrame();
         }
         if (e.getSource() == buttonJeep) {
             // Open new frame for menu

@@ -9,7 +9,7 @@ import java.awt.event.*;
 public class FlagsFrame extends JFrame implements ActionListener {
 
         private JButton[] flagButtons;
-        private String[] flagNames = {"Israel", "UnitedState", "Germany", "Greece", "Somalia", "JollyRoger"};
+        private String[] flagNames = {"Israel", "UnitedState", "Germany", "Greece", "Somalia", "JollyRoger", "Italia"};
         private ImageIcon[] flagImages;
 
         public FlagsFrame() {
@@ -23,21 +23,21 @@ public class FlagsFrame extends JFrame implements ActionListener {
 
 
             // Load the flag images
-            flagImages = new ImageIcon[6];
-            for (int i = 0; i < 6; i++) {
+            flagImages = new ImageIcon[7];
+            for (int i = 0; i < 7; i++) {
                 flagImages[i] = new ImageIcon("images/Flags/" + flagNames[i] + ".png");
             }
 
             // Create the buttons
-            flagButtons = new JButton[6];
-            for (int i = 0; i < 6; i++) {
+            flagButtons = new JButton[7];
+            for (int i = 0; i < 7; i++) {
                 flagButtons[i] = new JButton(flagImages[i]);
                 flagButtons[i].setActionCommand(flagNames[i]);
                 flagButtons[i].addActionListener(this);
             }
 
             // Create the layout
-            for (int i = 0; i < 6; i++) {
+            for (int i = 0; i < 7; i++) {
                 panel.add(flagButtons[i]);
             }
 
@@ -71,6 +71,9 @@ public class FlagsFrame extends JFrame implements ActionListener {
             if (source == flagButtons[5]){
                 changeFlag("JollyRoger");
             } //JollyRoger
+            if (source == flagButtons[6]){
+                changeFlag("Italia");
+            } //Italia
 
             this.dispose();
             MenuFrame frame = new MenuFrame();
