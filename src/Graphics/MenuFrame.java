@@ -116,7 +116,7 @@ public class MenuFrame extends JFrame implements ActionListener {
             //this.dispose();
         }
         if (source == takeVehicleButton) {
-            AllVehicles allVehicles = new AllVehicles();
+            takeVehicleForTest vehicleTest = new takeVehicleForTest();
             }
             //this.dispose();
         if (source == resetDistanceButton) {

@@ -13,7 +13,9 @@ public class takeVehicleForTest {
     JFrame frame = new JFrame("Take vehicle for test");
     private ImageIcon imageVehicle;
 
-    private JComboBox<Integer> comboBox = new JComboBox<>(){};
+    private JComboBox<Double> comboBox = new JComboBox<>(){};
+
+    private JButton OK = new JButton("OK");
 
 
     //constructor
@@ -21,13 +23,14 @@ public class takeVehicleForTest {
     public takeVehicleForTest() {
         frame = new JFrame();
         frame.setBounds(100, 100, 800, 600);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         frame.getContentPane().setLayout(new GridLayout(0, 3, 10, 10)); // 3 columns
         frame.getContentPane().setBackground(Color.darkGray);
 
-        for (int i = 0; i < 200000; i+=5) {
+        for (Double i = (double) 0; i < 200000; i+=5) {
             comboBox.addItem(i);
         }
+        comboBox.setSelectedItem("choose a distance");
 
         ArrayList<JLabel> labels = new ArrayList<>();
         for (Vehicle i : frameCars.vehicleList) {
@@ -62,7 +65,45 @@ public class takeVehicleForTest {
         panel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                int distance = distance();
+                JPanel panelcomboBox = new JPanel(new GridBagLayout());
+                JOptionPane.showMessageDialog(null, comboBox," choose distance ",JOptionPane.QUESTION_MESSAGE);
+                panel.add(panelcomboBox);
+                Double distance = (Double) (comboBox.getSelectedItem());
+                if(vehicle.getTotalDistance()+distance < 200000) {
+                    System.out.println(vehicle.getTotalDistance()+distance);
+                    vehicle.TravelDistance(distance);
+                    frame.dispose();
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "You can't travel more than 200000 km", "Error", JOptionPane.ERROR_MESSAGE);
+                    frame.dispose();
+                }
+
+                //test 1
+//                JFrame smallFrame = new JFrame("Take vehicle for test");
+//                smallFrame.setBounds(100, 100, 800, 600);
+//                smallFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+//                smallFrame.getContentPane().setLayout(new BorderLayout()); // 3 columns
+                    //test2
+//                JOptionPane optionPane = new JOptionPane("Please select distance", JOptionPane.QUESTION_MESSAGE, JOptionPane.DEFAULT_OPTION, null, new Object[]{}, null);
+//                //optionPane.add(comboBox);
+//                JDialog dialog = optionPane.createDialog("Select distance");
+//                dialog.getContentPane().setBackground(Color.darkGray);
+//                dialog.add(comboBox);
+//                dialog.setSize(800, 400);
+//                dialog.setVisible(true);
+//                int distance = (int) comboBox.getSelectedItem();
+//                dialog.add(OK);
+//                OK.addActionListener(e1 -> {
+//                    if(vehicle.getTotalDistance()+distance < 200000) {
+//                        vehicle.TravelDistance(distance);
+//                        dialog.dispose();
+//                    }
+//                    else {
+//                        JOptionPane.showMessageDialog(null, "You can't travel more than 200000 km", "Error", JOptionPane.ERROR_MESSAGE);
+//                    }
+//                });
+
                 }
 
             });
@@ -77,4 +118,5 @@ public class takeVehicleForTest {
         frame1.dispose();
         return (int) comboBox.getSelectedItem();
     }
+
 }
