@@ -91,7 +91,7 @@ public class FrameForEachVehicleDetails extends JFrame implements ActionListener
         //image label
         imageLabel = new JLabel();
         panel.add(imageLabel);
-        imageLabel.setPreferredSize(new Dimension(800, 500));
+        imageLabel.setPreferredSize(new Dimension(400,250));
 
         confirmButton = new JButton("Confirm All");
         confirmButton.addActionListener(this);

@@ -123,7 +123,7 @@ public class MenuFrame extends JFrame implements ActionListener {
             for (Vehicle i: frameCars.vehicleList) {
                 i.setTotalDistance(0);
             }
-            JOptionPane.showMessageDialog(null, "Distance reseted");
+            JOptionPane.showMessageDialog(null, "Distance RESTED!");
 
         }
         if (source == changeFlagButton) {

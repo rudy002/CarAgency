@@ -4,6 +4,7 @@ import abstractClass.Vehicle;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ public class OnlySeeAllVehicle {
 
     //data members
     private JFrame frame = new JFrame("See all vehicles");
-    private JButton buttonMenu = new JButton("Menu");
+    private JButton buttonMenu = new JButton();
 
     private ImageIcon imageVehicle;
 
@@ -38,8 +39,16 @@ public class OnlySeeAllVehicle {
             frame.add(label);
             labels.add(label);
         }
+        buttonMenu.setText("Menu");
+        buttonMenu.setVerticalTextPosition(AbstractButton.CENTER);
+        buttonMenu.setHorizontalTextPosition(AbstractButton.LEADING); //aka LEFT, for left-to-right locales
+        buttonMenu.setMnemonic(KeyEvent.VK_I);
         JPanel PanelButton = new JPanel();
         PanelButton.add(buttonMenu);
+
+
+        Icon icon = new ImageIcon("src/Graphics/Icons/Menu.png");
+
         frame.add(PanelButton);
         //PanelButton.add(new ImageIcon("src/Graphics/Icons/Menu.png"));
 
