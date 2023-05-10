@@ -25,7 +25,10 @@ public class FlagsFrame extends JFrame implements ActionListener {
             // Load the flag images
             flagImages = new ImageIcon[7];
             for (int i = 0; i < 7; i++) {
-                flagImages[i] = new ImageIcon("images/Flags/" + flagNames[i] + ".png");
+                Image img = new ImageIcon("images/Flags/" + flagNames[i] + ".png").getImage();
+                // Resize the image to your desired dimensions
+                Image resizedImg = img.getScaledInstance(300, 150, Image.SCALE_SMOOTH);
+                flagImages[i] = new ImageIcon(resizedImg);
             }
 
             // Create the buttons
@@ -33,6 +36,7 @@ public class FlagsFrame extends JFrame implements ActionListener {
             for (int i = 0; i < 7; i++) {
                 flagButtons[i] = new JButton(flagImages[i]);
                 flagButtons[i].setActionCommand(flagNames[i]);
+                flagButtons[i].setBackground(Color.darkGray);
                 flagButtons[i].addActionListener(this);
             }
 
