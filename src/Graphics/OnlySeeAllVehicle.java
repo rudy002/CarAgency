@@ -43,11 +43,10 @@ public class OnlySeeAllVehicle {
         buttonMenu.setVerticalTextPosition(AbstractButton.CENTER);
         buttonMenu.setHorizontalTextPosition(AbstractButton.LEADING); //aka LEFT, for left-to-right locales
         buttonMenu.setMnemonic(KeyEvent.VK_I);
+        buttonMenu.setPreferredSize(new Dimension(100, 50));
+
         JPanel PanelButton = new JPanel();
         PanelButton.add(buttonMenu);
-
-
-        Icon icon = new ImageIcon("src/Graphics/Icons/Menu.png");
 
         frame.add(PanelButton);
         //PanelButton.add(new ImageIcon("src/Graphics/Icons/Menu.png"));
