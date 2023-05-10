@@ -131,6 +131,11 @@ public class MenuFrame extends JFrame implements ActionListener {
             this.dispose();
         }
         if (source == exitButton) {
+            ImageIcon icon = new ImageIcon("images/Icons/giphy.gif");
+            JLabel label = new JLabel(icon);
+            JPanel panel = new JPanel();
+            panel.add(label);
+            JOptionPane.showMessageDialog(null, panel, "Goodbye!", JOptionPane.PLAIN_MESSAGE);
             exit(0);
         }
     }
