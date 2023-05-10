@@ -45,9 +45,9 @@ public class FrameForEachVehicleDetails extends JFrame implements ActionListener
         setVisible(true); //show frame
 
         //images
-        image1 = new ImageIcon("images/" + vehicleType + "Images/" + vehicleType + "1.png");
-        image2 = new ImageIcon("images/" + vehicleType + "Images/" + vehicleType + "2.png");
-        image3 = new ImageIcon("images/" + vehicleType + "Images/" + vehicleType + "3.png");
+        image1 = new ImageIcon("images/" + vehicleType + "Images/" + vehicleType + "1.jpg");
+        image2 = new ImageIcon("images/" + vehicleType + "Images/" + vehicleType + "2.jpg");
+        image3 = new ImageIcon("images/" + vehicleType + "Images/" + vehicleType + "3.jpg");
 
         //take image from imageIcon
         Image image1 = this.image1.getImage();
@@ -280,15 +280,15 @@ public class FrameForEachVehicleDetails extends JFrame implements ActionListener
         Object source = e.getSource();
         if (source == radio1){
             imageLabel.setIcon(image1);
-            path = "images/" + vehicleType + "Images/" + vehicleType + "1.png";
+            path = "images/" + vehicleType + "Images/" + vehicleType + "1.jpg";
         }
         if (source == radio2){
             imageLabel.setIcon(image2);
-            path = "images/" + vehicleType + "Images/" + vehicleType + "2.png";
+            path = "images/" + vehicleType + "Images/" + vehicleType + "2.jpg";
         }
         if (source == radio3){
             imageLabel.setIcon(image3);
-            path = "images/" + vehicleType + "Images/" + vehicleType + "3.png";
+            path = "images/" + vehicleType + "Images/" + vehicleType + "3.jpg";
         }
 //        if (source == validateButton){
 //            modelName = modelNameField.getText();

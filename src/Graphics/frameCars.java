@@ -19,11 +19,7 @@ public class frameCars extends JFrame implements ActionListener {
         //create new object
         frameCars frame = new frameCars();
 
-
-
     }
-
-
 
     //data members
 
@@ -37,22 +33,14 @@ public class frameCars extends JFrame implements ActionListener {
     private final JButton buttonAmphibious = new JButton();
     private final JButton buttonShowAllVehicle = new JButton();
 
-
-
-
-
-
-
     //constructor
     public frameCars() {
         super("Car Agency");
         this.setSize(800, 600);
 
-
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(2, 4));
         getContentPane().add(panel);
-
         //all images icons
         ImageIcon iconJeep = new ImageIcon("images/Icons/jeep.png");
         ImageIcon iconFrigate = new ImageIcon("images/Icons/frigate.png");
@@ -62,7 +50,6 @@ public class frameCars extends JFrame implements ActionListener {
         ImageIcon iconCruise = new ImageIcon("images/Icons/cruiseShip.png");
         ImageIcon iconAmphibious = new ImageIcon("images/Icons/amphibious.png");
         ImageIcon iconMenu = new ImageIcon("images/Icons/menu.png");
-
         //all labels buttons
         JLabel labelJeep = new JLabel("Jeep");
         JLabel labelFrigate = new JLabel("Frigate");
@@ -94,9 +81,6 @@ public class frameCars extends JFrame implements ActionListener {
         buttonBicycle.addActionListener(this);
         buttonCruise.addActionListener(this);
         buttonAmphibious.addActionListener(this);
-
-
-
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -159,8 +143,6 @@ if (e.getSource() == buttonAmphibious) {
         }
 
     }
-
-
 }
 
 

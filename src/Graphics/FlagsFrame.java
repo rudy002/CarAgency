@@ -25,7 +25,7 @@ public class FlagsFrame extends JFrame implements ActionListener {
             // Load the flag images
             flagImages = new ImageIcon[7];
             for (int i = 0; i < 7; i++) {
-                Image img = new ImageIcon("images/Flags/" + flagNames[i] + ".png").getImage();
+                Image img = new ImageIcon("images/Flags/" + flagNames[i] + ".jpg").getImage();
                 // Resize the image to your desired dimensions
                 Image resizedImg = img.getScaledInstance(300, 150, Image.SCALE_SMOOTH);
                 flagImages[i] = new ImageIcon(resizedImg);
