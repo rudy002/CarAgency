@@ -35,7 +35,10 @@ public class frameCars extends JFrame implements ActionListener {
     private final JButton buttonBicycle = new JButton();
     private final JButton buttonCruise = new JButton();
     private final JButton buttonAmphibious = new JButton();
+    private final JButton buttonElectricBicycle = new JButton();
+    private final JButton buttonHybridPlane = new JButton();
     private final JButton buttonShowAllVehicle = new JButton();
+
 
     //constructor
     public frameCars() {
@@ -43,7 +46,7 @@ public class frameCars extends JFrame implements ActionListener {
         this.setSize(800, 600);
 
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(2, 4));
+        panel.setLayout(new GridLayout(2, 5));
         getContentPane().add(panel);
         //all images icons
         ImageIcon iconJeep = new ImageIcon("images/Icons/jeep.png");
@@ -53,6 +56,8 @@ public class frameCars extends JFrame implements ActionListener {
         ImageIcon iconBicycle = new ImageIcon("images/Icons/bicycle.png");
         ImageIcon iconCruise = new ImageIcon("images/Icons/cruiseShip.png");
         ImageIcon iconAmphibious = new ImageIcon("images/Icons/amphibious.png");
+        ImageIcon iconElectricBicycle = new ImageIcon("images/Icons/electricBicycle.png");
+        ImageIcon iconHybridPlane = new ImageIcon("images/Icons/hybridPlane.png");
         ImageIcon iconMenu = new ImageIcon("images/Icons/menu.png");
         //all labels buttons
         JLabel labelJeep = new JLabel("Jeep");
@@ -62,6 +67,8 @@ public class frameCars extends JFrame implements ActionListener {
         JLabel labelBicycle = new JLabel("Bicycle");
         JLabel labelCruise = new JLabel("Cruise");
         JLabel labelAmphibious = new JLabel("Amphibious");
+        JLabel labelElectricBicycle = new JLabel("Electric Bicycle");
+        JLabel labelHybridPlane = new JLabel("Hybrid Plane");
         JLabel labelMenu = new JLabel("Show All Vehicles");
 
 
@@ -74,6 +81,8 @@ public class frameCars extends JFrame implements ActionListener {
         panel.add(newPanel(iconBicycle, labelBicycle, buttonBicycle));
         panel.add(newPanel(iconCruise, labelCruise, buttonCruise));
         panel.add(newPanel(iconAmphibious, labelAmphibious, buttonAmphibious));
+        panel.add(newPanel(iconElectricBicycle, labelElectricBicycle, buttonElectricBicycle));
+        panel.add(newPanel(iconHybridPlane, labelHybridPlane, buttonHybridPlane));
         panel.add(newPanel(iconMenu, labelMenu, buttonShowAllVehicle));
 
         //action listeners
@@ -85,6 +94,8 @@ public class frameCars extends JFrame implements ActionListener {
         buttonBicycle.addActionListener(this);
         buttonCruise.addActionListener(this);
         buttonAmphibious.addActionListener(this);
+        buttonElectricBicycle.addActionListener(this);
+        buttonHybridPlane.addActionListener(this);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -140,9 +151,19 @@ public class frameCars extends JFrame implements ActionListener {
             FrameForEachVehicleDetails detailsForCruise = new FrameForEachVehicleDetails("CruiseShip");
             this.dispose(); // Close current frame
         }
-if (e.getSource() == buttonAmphibious) {
+        if (e.getSource() == buttonAmphibious) {
             // Open new frame for menu
             FrameForEachVehicleDetails detailsForAmphibious = new FrameForEachVehicleDetails("Amphibious");
+            this.dispose(); // Close current frame
+        }
+        if (e.getSource() == buttonElectricBicycle) {
+            // Open new frame for menu
+            FrameForEachVehicleDetails detailsForElectricBicycle = new FrameForEachVehicleDetails("ElectricBicycle");
+            this.dispose(); // Close current frame
+        }
+        if (e.getSource() == buttonHybridPlane) {
+            // Open new frame for menu
+            FrameForEachVehicleDetails detailsForHybridPlane = new FrameForEachVehicleDetails("HybridPlane");
             this.dispose(); // Close current frame
         }
 
