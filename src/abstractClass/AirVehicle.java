@@ -32,7 +32,7 @@ public abstract class AirVehicle extends Vehicle {
         }
     }
 
-    public AirVehicleType getType() {
+    public AirVehicleType getAirType() {
         return type;
     }
 
@@ -55,6 +55,6 @@ public abstract class AirVehicle extends Vehicle {
 
     @Override
     public String toString() {
-        return super.toString() + "\nAir vehicle type : " + getType();
+        return super.toString() + "\nAir vehicle type : " + getAirType();
     }
 }

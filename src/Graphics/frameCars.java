@@ -117,54 +117,54 @@ public class frameCars extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == buttonShowAllVehicle) {
             // Open new frame for menu
-            this.dispose(); // Close current frame
+            //this.dispose(); // Close current frame
             OnlySeeAllVehicle onlySeeAllVehicle = new OnlySeeAllVehicle();
             //MenuFrame menuFrame = new MenuFrame();
         }
         if (e.getSource() == buttonJeep) {
             // Open new frame for menu
             FrameForEachVehicleDetails detailsForJeep = new FrameForEachVehicleDetails("Jeep");
-            this.dispose(); // Close current frame
+            //this.dispose(); // Close current frame
         }
         if (e.getSource() == buttonFrigate) {
             // Open new frame for menu
             FrameForEachVehicleDetails detailsForFrigate = new FrameForEachVehicleDetails("Frigate");
-            this.dispose(); // Close current frame
+            //this.dispose(); // Close current frame
         }
         if (e.getSource() == buttonGamePlane) {
             // Open new frame for menu
             FrameForEachVehicleDetails detailsForGamePlane = new FrameForEachVehicleDetails("GamePlane");
-            this.dispose(); // Close current frame
+            //this.dispose(); // Close current frame
         }
         if (e.getSource() == buttonSpyPlane) {
             // Open new frame for menu
             FrameForEachVehicleDetails detailsForSpyPlane = new FrameForEachVehicleDetails("SpyPlane");
-            this.dispose(); // Close current frame
+            //this.dispose(); // Close current frame
         }
         if (e.getSource() == buttonBicycle) {
             // Open new frame for menu
             FrameForEachVehicleDetails detailsForBicycle = new FrameForEachVehicleDetails("Bicycle");
-            this.dispose(); // Close current frame
+            //this.dispose(); // Close current frame
         }
         if (e.getSource() == buttonCruise) {
             // Open new frame for menu
             FrameForEachVehicleDetails detailsForCruise = new FrameForEachVehicleDetails("CruiseShip");
-            this.dispose(); // Close current frame
+            //this.dispose(); // Close current frame
         }
         if (e.getSource() == buttonAmphibious) {
             // Open new frame for menu
             FrameForEachVehicleDetails detailsForAmphibious = new FrameForEachVehicleDetails("Amphibious");
-            this.dispose(); // Close current frame
+           // this.dispose(); // Close current frame
         }
         if (e.getSource() == buttonElectricBicycle) {
             // Open new frame for menu
             FrameForEachVehicleDetails detailsForElectricBicycle = new FrameForEachVehicleDetails("ElectricBicycle");
-            this.dispose(); // Close current frame
+            //this.dispose(); // Close current frame
         }
         if (e.getSource() == buttonHybridPlane) {
             // Open new frame for menu
             FrameForEachVehicleDetails detailsForHybridPlane = new FrameForEachVehicleDetails("HybridPlane");
-            this.dispose(); // Close current frame
+            //this.dispose(); // Close current frame
         }
 
     }

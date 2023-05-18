@@ -16,11 +16,11 @@ public class ElectricBicycle extends LandVehicle implements IEngine {
 
 
     //Constructor
-    public ElectricBicycle(String modelName, double maxSpeed, double averageFuelConsumption, double lifeTimeEngine, String path) {
-        super(modelName, 0, 5, maxSpeed, kindOfLand.dirt, 4, path);
+    public ElectricBicycle(String modelName, double maxSpeed, double lifeTimeEngine, String path) {
+        super(modelName, 0, 2, maxSpeed, kindOfLand.dirt, 2, path);
         this.lifeTimeEngine = lifeTimeEngine;
 //      SetLifeTimeEngine(lifeTimeEngine);
-        this.averageFuelConsumption = averageFuelConsumption;
+        this.averageFuelConsumption = 20;
 //      SetAverageFuelConsumption(averageFuelConsumption);
     }
 

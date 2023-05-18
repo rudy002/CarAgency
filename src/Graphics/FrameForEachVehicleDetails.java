@@ -149,7 +149,7 @@ public class FrameForEachVehicleDetails extends JFrame implements ActionListener
 
                 break;
             }
-            case "Amphibious": {
+            case "Amphibious", "HybridPlane": {
                 imageLabel.setPreferredSize(new Dimension(400, 200));
                 //add text fields for model
                 panel.add(panelModel());
@@ -164,6 +164,16 @@ public class FrameForEachVehicleDetails extends JFrame implements ActionListener
                 //combobox max number of passenger
                 panel.add(panelMaxPassenger(1000));
 
+                break;
+            }
+
+            case "ElectricBicycle": {
+                //add text fields for model
+                panel.add(panelModel());
+                //combobox MaxSpeed
+                panel.add(panelMaxSpeed(1000));
+                //combobox lifetime
+                panel.add(panelLifeTime(100));
                 break;
             }
         }
@@ -329,10 +339,18 @@ public class FrameForEachVehicleDetails extends JFrame implements ActionListener
                     frameCars.vehicleList.add(new CruiseShip(modelNameField.getText(), (Integer) comboBoxPassengers.getSelectedItem(),(Double)comboBoxSpeed.getSelectedItem(), (String) comboBoxFlag.getSelectedItem() , path));
                     break;
                 }
-                case "Amphibious": {
-                    frameCars.vehicleList.add(new Amphibious(modelNameField.getText(), (Double) comboBoxSpeed.getSelectedItem(), (Integer) comboBoxWheels.getSelectedItem(), (Double) comboBoxFuel.getSelectedItem(), (Double) comboBoxLifeTime.getSelectedItem(),(Integer) comboBoxPassengers.getSelectedItem(), path));
+                case "Amphibious", "HybridPlane": {
+                    if (vehicleType == "Amphibious")
+                        frameCars.vehicleList.add(new Amphibious(modelNameField.getText(), (Double) comboBoxSpeed.getSelectedItem(), (Integer) comboBoxWheels.getSelectedItem(), (Double) comboBoxFuel.getSelectedItem(), (Double) comboBoxLifeTime.getSelectedItem(),(Integer) comboBoxPassengers.getSelectedItem(), path));
+                    else
+                        frameCars.vehicleList.add(new HybridPlane(modelNameField.getText(), (Double) comboBoxSpeed.getSelectedItem(), (Integer) comboBoxWheels.getSelectedItem(), (Double) comboBoxFuel.getSelectedItem(), (Double) comboBoxLifeTime.getSelectedItem(),(Integer) comboBoxPassengers.getSelectedItem(), path));
                     break;
                 }
+                case "ElectricBicycle": {
+                    frameCars.vehicleList.add(new ElectricBicycle(modelNameField.getText(), (Double) comboBoxSpeed.getSelectedItem(), (Double) comboBoxLifeTime.getSelectedItem(), path));
+                    break;
+                }
+
             }
 
             // essaie du bouton confirm

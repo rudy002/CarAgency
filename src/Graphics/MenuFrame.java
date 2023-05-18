@@ -21,6 +21,7 @@ public class MenuFrame extends JFrame implements ActionListener {
     private ImageIcon iconTakeVehicle = new ImageIcon("images/Icons/takeVehicleForTest.png");
     private ImageIcon iconResetDistance = new ImageIcon("images/Icons/resetDistance.png");
     private ImageIcon iconChangeFlag = new ImageIcon("images/Icons/changeFlag.png");
+    private ImageIcon iconInventory = new ImageIcon("images/Icons/Inventory.png");
     private ImageIcon iconExit = new ImageIcon("images/Icons/exit.png");
 
 
@@ -29,6 +30,7 @@ public class MenuFrame extends JFrame implements ActionListener {
     private JButton takeVehicleButton = new JButton("Take vehicle for test");
     private JButton resetDistanceButton = new JButton("Reset Distance");
     private JButton changeFlagButton = new JButton("Change flag");
+    private JButton inventoryButton = new JButton("Inventory");
     private JButton exitButton = new JButton("Exit");
 
 
@@ -39,7 +41,7 @@ public class MenuFrame extends JFrame implements ActionListener {
         super("Menu user");
         this.setSize(800, 600);
 
-        JPanel panel = new JPanel(new GridLayout(6, 1));
+        JPanel panel = new JPanel(new GridLayout(7, 1));
         getContentPane().add(panel);
         panel.setBackground(Color.darkGray);
 
@@ -54,6 +56,8 @@ public class MenuFrame extends JFrame implements ActionListener {
         imageResetDistance = imageResetDistance.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
         Image imageChangeFlag = iconChangeFlag.getImage();
         imageChangeFlag = imageChangeFlag.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+        Image imageInventory = iconInventory.getImage();
+        imageInventory = imageInventory.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
         Image imageExit = iconExit.getImage();
         imageExit = imageExit.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
 
@@ -63,6 +67,7 @@ public class MenuFrame extends JFrame implements ActionListener {
         this.iconTakeVehicle = new ImageIcon(imageTakeVehicle);
         this.iconResetDistance = new ImageIcon(imageResetDistance);
         this.iconChangeFlag = new ImageIcon(imageChangeFlag);
+        this.iconInventory = new ImageIcon(imageInventory);
         this.iconExit = new ImageIcon(imageExit);
 
         //set icon to buttons
@@ -71,6 +76,7 @@ public class MenuFrame extends JFrame implements ActionListener {
         takeVehicleButton.setIcon(iconTakeVehicle);
         resetDistanceButton.setIcon(iconResetDistance);
         changeFlagButton.setIcon(iconChangeFlag);
+        inventoryButton.setIcon(iconInventory);
         exitButton.setIcon(iconExit);
 
 
@@ -80,6 +86,7 @@ public class MenuFrame extends JFrame implements ActionListener {
         panel.add(takeVehicleButton);
         panel.add(resetDistanceButton);
         panel.add(changeFlagButton);
+        panel.add(inventoryButton);
         panel.add(exitButton);
 
         //change size and font of buttons
@@ -88,6 +95,7 @@ public class MenuFrame extends JFrame implements ActionListener {
         takeVehicleButton.setFont(new Font("Arial", Font.BOLD, 20));
         resetDistanceButton.setFont(new Font("Arial", Font.BOLD, 20));
         changeFlagButton.setFont(new Font("Arial", Font.BOLD, 20));
+        inventoryButton.setFont(new Font("Arial", Font.BOLD, 20));
         exitButton.setFont(new Font("Arial", Font.BOLD, 20));
 
         //action listeners of buttons
@@ -96,6 +104,7 @@ public class MenuFrame extends JFrame implements ActionListener {
         takeVehicleButton.addActionListener(this);
         resetDistanceButton.addActionListener(this);
         changeFlagButton.addActionListener(this);
+        inventoryButton.addActionListener(this);
         exitButton.addActionListener(this);
 
 
@@ -110,7 +119,7 @@ public class MenuFrame extends JFrame implements ActionListener {
 
         if (source == addVehicleButton) {
             frameCars frameCars = new frameCars();
-            this.dispose();
+            //this.dispose();
         }
         if (source == buyVehicleButton) {
             AllVehicles allVehicles = new AllVehicles();
@@ -121,6 +130,7 @@ public class MenuFrame extends JFrame implements ActionListener {
         }
         if (source == takeVehicleButton) {
             takeVehicleForTest vehicleTest = new takeVehicleForTest();
+
             }
             //this.dispose();
         if (source == resetDistanceButton) {
@@ -132,7 +142,11 @@ public class MenuFrame extends JFrame implements ActionListener {
         }
         if (source == changeFlagButton) {
             FlagsFrame flagsFrame = new FlagsFrame();
-            this.dispose();
+            //this.dispose();
+        }
+        if (source == inventoryButton) {
+            AllVehicles allVehicles = new AllVehicles();
+            //this.dispose();
         }
         if (source == exitButton) {
             ImageIcon icon = new ImageIcon("images/Icons/giphy.gif");

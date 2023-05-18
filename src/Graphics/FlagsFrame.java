@@ -19,7 +19,7 @@ public class FlagsFrame extends JFrame implements ActionListener {
         public FlagsFrame() {
             super("Flags");
             setSize(1400, 1000);
-            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 
             JPanel panel = new JPanel();
             getContentPane().add(panel);
