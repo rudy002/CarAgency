@@ -5,6 +5,9 @@ Rudy Haddad : 336351481
 
 package abstractClass;
 
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 public abstract class Vehicle {
 
 
@@ -13,6 +16,10 @@ public abstract class Vehicle {
     private double totalDistance; // total distance traveled by vehicle
     private int MaxNumberPassenger; // maximum number of passengers the vehicle can carry
     private double maxSpeed; // maximum speed of the vehicle
+    private boolean inTest = false;
+
+    private static Object sharedLock = new Object(); // Verrou partagé pour la synchronisation des threads
+
 
     private String path;
 
@@ -66,6 +73,10 @@ public abstract class Vehicle {
         return true;
     }
 
+    public static Object getSharedLock() {
+        return sharedLock;
+    }
+
 
 
     //Methods
@@ -90,6 +101,33 @@ public abstract class Vehicle {
     public String toString() {
         return "Model name: " + getModelName() + "\nTotal distance: " + getTotalDistance() + "\nMaximum number of passengers: " + getMaxNumberPassenger() + "\nMaximum speed: " + getMaxSpeed();
     }
+
+    public synchronized void startTest(double distance) throws InterruptedException {
+
+        synchronized (sharedLock) {
+
+            if (inTest) {
+                throw new IllegalStateException("This vehicle is already being tested.");
+            }
+
+            inTest = true;
+            // Effectuer les actions nécessaires pour le test
+
+            // Faire dormir le thread pendant la durée du test
+            long sleepTime = (long) (distance * 100);
+            Thread.sleep(sleepTime);
+
+            // Effectuer d'autres actions après le test
+
+            inTest = false;
+        }
+    }
+
+    public synchronized boolean isInTest() {
+        return inTest;
+    }
+
 }
+
 
 

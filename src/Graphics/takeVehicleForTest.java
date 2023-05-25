@@ -1,8 +1,3 @@
-/*
-Sarah Khalifa : 342513066
-Rudy Haddad : 336351481
- */
-
 package Graphics;
 
 import abstractClass.Vehicle;
@@ -21,6 +16,8 @@ public class takeVehicleForTest {
     private JComboBox<Double> comboBox = new JComboBox<>(){};
 
     private JButton OK = new JButton("OK");
+
+
 
 
     //constructor
@@ -70,22 +67,32 @@ public class takeVehicleForTest {
         panel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                JPanel panelcomboBox = new JPanel(new GridBagLayout());
-                JOptionPane.showMessageDialog(null, comboBox," choose distance ",JOptionPane.QUESTION_MESSAGE);
-                panel.add(panelcomboBox);
-                Double distance = (Double) (comboBox.getSelectedItem());
-                if(vehicle.getTotalDistance()+distance < 200000) {
-                    System.out.println(vehicle.getTotalDistance()+distance);
-                    vehicle.TravelDistance(distance);
-                    frame.dispose();
-                }
-                else {
-                    JOptionPane.showMessageDialog(null, "You can't travel more than 200000 km", "Error", JOptionPane.ERROR_MESSAGE);
-                    frame.dispose();
+                synchronized (Vehicle.getSharedLock()) {
+                    JPanel panelcomboBox = new JPanel(new GridBagLayout());
+                    JOptionPane.showMessageDialog(null, comboBox, " choose distance ", JOptionPane.QUESTION_MESSAGE);
+                    panel.add(panelcomboBox);
+                    Double distance = (Double) (comboBox.getSelectedItem());
+                    if (vehicle.getTotalDistance() + distance < 200000) {
+                        if (!TestManager.isVehicleInTest(vehicle)) {
+                            try {
+                                TestManager.startTest(vehicle, distance);
+                                vehicle.TravelDistance(distance);
+                            } catch (IllegalStateException ex) {
+                                JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "This vehicle is already being tested.", "Error", JOptionPane.ERROR_MESSAGE);
+                        }
+
+                        frame.dispose();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "You can't travel more than 200000 km", "Error", JOptionPane.ERROR_MESSAGE);
+                        frame.dispose();
+                    }
                 }
             }
 
-            });
+        });
         return panel;
     }
 

@@ -33,7 +33,7 @@ public class MenuFrame extends JFrame implements ActionListener {
     private JButton inventoryButton = new JButton("Inventory");
     private JButton exitButton = new JButton("Exit");
 
-
+    private Object lock = new Object();
 
 
     //constructor
@@ -131,7 +131,8 @@ public class MenuFrame extends JFrame implements ActionListener {
         if (source == takeVehicleButton) {
             takeVehicleForTest vehicleTest = new takeVehicleForTest();
 
-            }
+
+        }
             //this.dispose();
         if (source == resetDistanceButton) {
             for (Vehicle i: frameCars.vehicleList) {
@@ -157,5 +158,6 @@ public class MenuFrame extends JFrame implements ActionListener {
             exit(0);
         }
     }
+
 
 }
