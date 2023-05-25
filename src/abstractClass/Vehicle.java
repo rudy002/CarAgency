@@ -20,6 +20,7 @@ public abstract class Vehicle {
 
     private static Object sharedLock = new Object(); // Verrou partagé pour la synchronisation des threads
 
+    private Lock lock = new ReentrantLock(); // Verrou pour la synchronisation des threads
 
     private String path;
 
@@ -126,6 +127,11 @@ public abstract class Vehicle {
     public synchronized boolean isInTest() {
         return inTest;
     }
+
+    public Lock getLock() {
+        return lock;
+    }
+
 
 }
 

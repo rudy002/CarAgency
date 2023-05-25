@@ -71,19 +71,23 @@ public class AllVehicles {
             @Override
             public void mouseClicked(MouseEvent e) {
                 int delay = new Random().nextInt(6) + 5;
-                try {
+                try{
                     Thread.sleep(delay * 1000);
-                } catch (InterruptedException ex) {
+                    new Loading("Charging");
+                }catch (InterruptedException ex){
                     ex.printStackTrace();
                 }
+                if (!TestManager.isVehicleInTest(vehicle)) {
+                    int result = JOptionPane.showConfirmDialog(frame, "Do you want to buy this vehicle?", "Confirmation",
+                            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                    if (result == JOptionPane.YES_OPTION) {
+                        JOptionPane.showMessageDialog(null, "You are successfully bought this vehicle", "Congratulations", JOptionPane.INFORMATION_MESSAGE);
 
-                int result = JOptionPane.showConfirmDialog(frame, "Do you want to buy this vehicle?", "Confirmation",
-                        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-                if (result == JOptionPane.YES_OPTION) {
-                    JOptionPane.showMessageDialog(null, "You are successfully bought this vehicle", "Congratulations", JOptionPane.INFORMATION_MESSAGE);
-
-                    update(vehicle);
-                    frame.dispose();
+                        update(vehicle);
+                        frame.dispose();
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "You can't buy this vehicle because it is already in test\n", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
@@ -102,6 +106,25 @@ public class AllVehicles {
                     frameCars.vehicleList.remove(vehicle);
                     Thread.sleep(randomNum);
                     loading.setText("Update Done!");
+                    Thread.sleep(700);
+                    loading.terminate();
+                }
+            } catch (InterruptedException e) {
+                JOptionPane.showMessageDialog(null, "Error");
+            }
+        });
+        t.start();
+    }
+
+    public void update() {
+        Thread t = new Thread(() -> {
+            try {
+                synchronized (frameCars.vehicleList) {
+                    Random rand = new Random();
+                    int randomNum;
+                    randomNum = 3000 + rand.nextInt((10000 - 5000) + 1);
+                    Loading loading = new Loading("Charging Database");
+                    Thread.sleep(randomNum);
                     Thread.sleep(700);
                     loading.terminate();
                 }

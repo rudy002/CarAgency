@@ -7,6 +7,8 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.Random;
+import java.util.concurrent.locks.Lock;
 
 public class takeVehicleForTest {
 
@@ -76,7 +78,8 @@ public class takeVehicleForTest {
                         if (!TestManager.isVehicleInTest(vehicle)) {
                             try {
                                 TestManager.startTest(vehicle, distance);
-                                vehicle.TravelDistance(distance);
+                                update(vehicle, distance);
+                                //vehicle.TravelDistance(distance);
                             } catch (IllegalStateException ex) {
                                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                             }
@@ -96,13 +99,26 @@ public class takeVehicleForTest {
         return panel;
     }
 
-    public int distance() {
-        JFrame frame1 = new JFrame("select distance");
-        frame1.setBounds(100, 100, 800, 600);
-        frame1.add(comboBox);
-        frame1.setVisible(true);
-        frame1.dispose();
-        return (int) comboBox.getSelectedItem();
+    public void update(Vehicle vehicle, Double distance) {
+        Thread t = new Thread(() -> {
+            try {
+                synchronized (frameCars.vehicleList) {
+                    Random rand = new Random();
+                    int randomNum;
+                    randomNum = 3000 + rand.nextInt((8000 - 3000) + 1);
+                    Loading loading = new Loading("Updating Database...");
+                    vehicle.TravelDistance(distance);
+                    Thread.sleep(randomNum);
+                    loading.setText("Update Done!");
+                    Thread.sleep(700);
+                    loading.terminate();
+                }
+            } catch (InterruptedException e) {
+                JOptionPane.showMessageDialog(null, "Error");
+            }
+        });
+        t.start();
     }
+
 
 }
