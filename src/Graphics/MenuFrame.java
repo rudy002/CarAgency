@@ -10,6 +10,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
 import static java.lang.System.exit;
 
@@ -108,7 +109,6 @@ public class MenuFrame extends JFrame implements ActionListener {
         exitButton.addActionListener(this);
 
 
-
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }
@@ -123,7 +123,7 @@ public class MenuFrame extends JFrame implements ActionListener {
         }
         if (source == buyVehicleButton) {
             AllVehicles allVehicles = new AllVehicles();
-            for(Object vehicle : frameCars.vehicleList ){
+            for (Object vehicle : frameCars.vehicleList) {
                 System.out.println(vehicle.toString());
             }
             //this.dispose();
@@ -133,13 +133,9 @@ public class MenuFrame extends JFrame implements ActionListener {
 
 
         }
-            //this.dispose();
+        //this.dispose();
         if (source == resetDistanceButton) {
-            for (Vehicle i: frameCars.vehicleList) {
-                i.setTotalDistance(0);
-            }
-            JOptionPane.showMessageDialog(null, "Distance RESTED!");
-
+            Reset();
         }
         if (source == changeFlagButton) {
             FlagsFrame flagsFrame = new FlagsFrame();
@@ -159,5 +155,34 @@ public class MenuFrame extends JFrame implements ActionListener {
         }
     }
 
+    private void Reset() {
+        int reply = JOptionPane.showConfirmDialog(null, "Are you sure you wanna RESET? ", "RESET", JOptionPane.YES_NO_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {
+            Thread t = new Thread(new Runnable() {
+                public void run() {
+                    try {
+                        synchronized (frameCars.vehicleList) {
+                            Random rand = new Random();
+                            int randomNum;
+                            randomNum = 3000 + rand.nextInt((8000 - 3000) + 1);
+                            Loading loading = new Loading("Updating Database...");
+                            for (Vehicle i : frameCars.vehicleList) {
+                                i.setTotalDistance(0);
+                            }
+                            Thread.sleep(randomNum);
+                            loading.setText("Update Done!");
+                            Thread.sleep(700);
+                            loading.terminate();
+                        }
+                    } catch (InterruptedException e) {
+                        JOptionPane.showMessageDialog(null, "Error");
+                    }
+                }
+            });
+            t.start();
 
+        } else {
+            JOptionPane.showMessageDialog(null, "Reset Canceled");
+        }
+    }
 }

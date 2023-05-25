@@ -10,6 +10,8 @@ import abstractClass.Vehicle;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Random;
+
 public class FlagsFrame extends JFrame implements ActionListener {
 
         private JButton[] flagButtons;
@@ -89,12 +91,30 @@ public class FlagsFrame extends JFrame implements ActionListener {
         }
 
             public void changeFlag(String flagName) {
-                for (Vehicle i : frameCars.vehicleList) {
-                    if (i instanceof MarineVehicle)
-                        ((MarineVehicle) i).setFlag(flagName);
-                    else if (i instanceof Amphibious)
-                        ((Amphibious) i).setFlag(flagName);
-                }
+
+                Thread t = new Thread(() -> {
+                    try {
+                        synchronized (frameCars.vehicleList) {
+                            Random rand = new Random();
+                            int randomNum;
+                            randomNum = 3000 + rand.nextInt((8000 - 3000) + 1);
+                            Loading loading = new Loading("Updating Database...");
+                            for (Vehicle i : frameCars.vehicleList) {
+                                if (i instanceof MarineVehicle)
+                                    ((MarineVehicle) i).setFlag(flagName);
+                                else if (i instanceof Amphibious)
+                                    ((Amphibious) i).setFlag(flagName);
+                            }
+                            Thread.sleep(randomNum);
+                            loading.setText("Update Done!");
+                            Thread.sleep(700);
+                            loading.terminate();
+                        }
+                    } catch (InterruptedException e) {
+                        JOptionPane.showMessageDialog(null, "Error");
+                    }
+                });
+                t.start();
             }
 
 

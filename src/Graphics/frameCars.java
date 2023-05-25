@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -116,6 +117,7 @@ public class frameCars extends JFrame implements ActionListener {
         panel.add(label);
         return panel;
     }
+
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == buttonShowAllVehicle) {

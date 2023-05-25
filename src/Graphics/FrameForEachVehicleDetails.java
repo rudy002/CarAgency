@@ -12,6 +12,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
 public class FrameForEachVehicleDetails extends JFrame implements ActionListener {
 
@@ -313,41 +314,41 @@ public class FrameForEachVehicleDetails extends JFrame implements ActionListener
         if(source == confirmButton){
             switch (vehicleType) {
                 case "Jeep": {
-                    frameCars.vehicleList.add(new Jeep(modelNameField.getText(), (Double)comboBoxSpeed.getSelectedItem(), (Double) comboBoxFuel.getSelectedItem(), (Double) comboBoxLifeTime.getSelectedItem(), path));
+                    update(new Jeep(modelNameField.getText(), (Double)comboBoxSpeed.getSelectedItem(), (Double) comboBoxFuel.getSelectedItem(), (Double) comboBoxLifeTime.getSelectedItem(), path));
                     break;
                 }
                 case "Frigate": {
-                    frameCars.vehicleList.add(new Frigate(modelNameField.getText(), (Integer) comboBoxPassengers.getSelectedItem(),(Double)comboBoxSpeed.getSelectedItem(), path));
+                    update(new Frigate(modelNameField.getText(), (Integer) comboBoxPassengers.getSelectedItem(),(Double)comboBoxSpeed.getSelectedItem(), path));
                     break;
                 }
                 case "GamePlane": {
-                    frameCars.vehicleList.add((new GamePlane(path)));
+                    update((new GamePlane(path)));
                     break;
                 }
                 case "SpyPlane": {
-                    frameCars.vehicleList.add(new SpyPlane(sourceOfEnergyField.getText(),path));
+                    update(new SpyPlane(sourceOfEnergyField.getText(),path));
                     break;
                 }
                 case "Bicycle": {
                     if (comboBoxKindOfLand.getSelectedItem() == "Paved")
-                        frameCars.vehicleList.add(new Bicycle(modelNameField.getText(), LandVehicle.kindOfLand.paved,path));
+                        update(new Bicycle(modelNameField.getText(), LandVehicle.kindOfLand.paved,path));
                     else
-                        frameCars.vehicleList.add(new Bicycle(modelNameField.getText(), LandVehicle.kindOfLand.dirt,path));
+                        update(new Bicycle(modelNameField.getText(), LandVehicle.kindOfLand.dirt,path));
                     break;
                 }
                 case "CruiseShip": {
-                    frameCars.vehicleList.add(new CruiseShip(modelNameField.getText(), (Integer) comboBoxPassengers.getSelectedItem(),(Double)comboBoxSpeed.getSelectedItem(), (String) comboBoxFlag.getSelectedItem() , path));
+                    update(new CruiseShip(modelNameField.getText(), (Integer) comboBoxPassengers.getSelectedItem(),(Double)comboBoxSpeed.getSelectedItem(), (String) comboBoxFlag.getSelectedItem() , path));
                     break;
                 }
                 case "Amphibious", "HybridPlane": {
                     if (vehicleType == "Amphibious")
-                        frameCars.vehicleList.add(new Amphibious(modelNameField.getText(), (Double) comboBoxSpeed.getSelectedItem(), (Integer) comboBoxWheels.getSelectedItem(), (Double) comboBoxFuel.getSelectedItem(), (Double) comboBoxLifeTime.getSelectedItem(),(Integer) comboBoxPassengers.getSelectedItem(), path));
+                        update(new Amphibious(modelNameField.getText(), (Double) comboBoxSpeed.getSelectedItem(), (Integer) comboBoxWheels.getSelectedItem(), (Double) comboBoxFuel.getSelectedItem(), (Double) comboBoxLifeTime.getSelectedItem(),(Integer) comboBoxPassengers.getSelectedItem(), path));
                     else
-                        frameCars.vehicleList.add(new HybridPlane(modelNameField.getText(), (Double) comboBoxSpeed.getSelectedItem(), (Integer) comboBoxWheels.getSelectedItem(), (Double) comboBoxFuel.getSelectedItem(), (Double) comboBoxLifeTime.getSelectedItem(),(Integer) comboBoxPassengers.getSelectedItem(), path));
+                        update(new HybridPlane(modelNameField.getText(), (Double) comboBoxSpeed.getSelectedItem(), (Integer) comboBoxWheels.getSelectedItem(), (Double) comboBoxFuel.getSelectedItem(), (Double) comboBoxLifeTime.getSelectedItem(),(Integer) comboBoxPassengers.getSelectedItem(), path));
                     break;
                 }
                 case "ElectricBicycle": {
-                    frameCars.vehicleList.add(new ElectricBicycle(modelNameField.getText(), (Double) comboBoxSpeed.getSelectedItem(), (Double) comboBoxLifeTime.getSelectedItem(), path));
+                    update(new ElectricBicycle(modelNameField.getText(), (Double) comboBoxSpeed.getSelectedItem(), (Double) comboBoxLifeTime.getSelectedItem(), path));
                     break;
                 }
 
@@ -362,6 +363,27 @@ public class FrameForEachVehicleDetails extends JFrame implements ActionListener
         }
 
 
+    }
+
+    public void update(Vehicle vehicle) {
+        Thread t = new Thread(() -> {
+            try {
+                synchronized (frameCars.vehicleList) {
+                    Random rand = new Random();
+                    int randomNum;
+                    randomNum = 3000 + rand.nextInt((8000 - 3000) + 1);
+                    Loading loading = new Loading("Updating Database...");
+                    frameCars.vehicleList.add(vehicle);
+                    Thread.sleep(randomNum);
+                    loading.setText("Update Done!");
+                    Thread.sleep(700);
+                    loading.terminate();
+                }
+            } catch (InterruptedException e) {
+                JOptionPane.showMessageDialog(null, "Error");
+            }
+        });
+        t.start();
     }
 
 
