@@ -77,8 +77,9 @@ public class takeVehicleForTest {
                     if (vehicle.getTotalDistance() + distance < 200000) {
                         if (!TestManager.isVehicleInTest(vehicle)) {
                             try {
+                                vehicle.TravelDistance(distance);
                                 TestManager.startTest(vehicle, distance);
-                                update(vehicle, distance);
+                                JOptionPane.showMessageDialog(null, "The vehicle is now being tested.", "Success", JOptionPane.INFORMATION_MESSAGE);
                                 //vehicle.TravelDistance(distance);
                             } catch (IllegalStateException ex) {
                                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -99,26 +100,7 @@ public class takeVehicleForTest {
         return panel;
     }
 
-    public void update(Vehicle vehicle, Double distance) {
-        Thread t = new Thread(() -> {
-            try {
-                synchronized (frameCars.vehicleList) {
-                    Random rand = new Random();
-                    int randomNum;
-                    randomNum = 3000 + rand.nextInt((8000 - 3000) + 1);
-                    Loading loading = new Loading("Updating Database...");
-                    vehicle.TravelDistance(distance);
-                    Thread.sleep(randomNum);
-                    loading.setText("Update Done!");
-                    Thread.sleep(700);
-                    loading.terminate();
-                }
-            } catch (InterruptedException e) {
-                JOptionPane.showMessageDialog(null, "Error");
-            }
-        });
-        t.start();
-    }
+
 
 
 }

@@ -29,5 +29,10 @@ public class TestManager {
         });
         testThread.start();
     }
+
+    public static synchronized boolean isAnyVehicleInTest() {
+        return vehicleInTest != null;
+    }
+
 }
 

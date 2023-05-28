@@ -5,6 +5,7 @@ Rudy Haddad : 336351481
 
 package abstractClass;
 
+import javax.swing.*;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -107,8 +108,9 @@ public abstract class Vehicle {
 
         synchronized (sharedLock) {
 
-            if (inTest) {
-                throw new IllegalStateException("This vehicle is already being tested.");
+            if (isInTest()) {
+                JOptionPane.showMessageDialog(null, "This vehicle is already being tested.");
+                return;
             }
 
             inTest = true;
@@ -119,8 +121,9 @@ public abstract class Vehicle {
             Thread.sleep(sleepTime);
 
             // Effectuer d'autres actions après le test
-
-            inTest = false;
+            synchronized (sharedLock) {
+                inTest = false;
+            }
         }
     }
 

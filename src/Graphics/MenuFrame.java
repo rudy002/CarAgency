@@ -146,6 +146,11 @@ public class MenuFrame extends JFrame implements ActionListener {
             //this.dispose();
         }
         if (source == exitButton) {
+            if(TestManager.isAnyVehicleInTest()){
+                    JOptionPane.showMessageDialog(null, "You can't exit while vehicle is in test!", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+
+            }
             ImageIcon icon = new ImageIcon("images/Icons/giphy.gif");
             JLabel label = new JLabel(icon);
             JPanel panel = new JPanel();
