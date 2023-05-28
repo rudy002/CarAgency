@@ -146,7 +146,7 @@ public class MenuFrame extends JFrame implements ActionListener {
             //this.dispose();
         }
         if (source == exitButton) {
-            if(TestManager.isAnyVehicleInTest()){
+            if(TestManager.isAnyVehicleInTest() || BuyManager.isAnyVehicleInBuyProgress()){
                     JOptionPane.showMessageDialog(null, "You can't exit while vehicle is in test!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
 

@@ -19,9 +19,15 @@ public abstract class Vehicle {
     private double maxSpeed; // maximum speed of the vehicle
     private boolean inTest = false;
 
+    private boolean inBuy = false;
+
     private static Object sharedLock = new Object(); // Verrou partagé pour la synchronisation des threads
 
+    private static Object sharedLockB = new Object(); // Verrou partagé pour la synchronisation des threads
+
     private Lock lock = new ReentrantLock(); // Verrou pour la synchronisation des threads
+
+    private Lock lockB = new ReentrantLock(); // Verrou pour la synchronisation des threads
 
     private String path;
 
@@ -78,6 +84,8 @@ public abstract class Vehicle {
     public static Object getSharedLock() {
         return sharedLock;
     }
+
+    public static Object getSharedLockB() {return sharedLock;}
 
 
 
@@ -136,6 +144,33 @@ public abstract class Vehicle {
     }
 
 
+
+    public synchronized void starBuy() throws InterruptedException {
+
+        synchronized (sharedLockB) {
+
+            if (isInBuy()) {
+                JOptionPane.showMessageDialog(null, "This vehicle is already being buy process.");
+                return;
+            }
+
+            inBuy = true;
+
+
+            // Effectuer d'autres actions après le test
+            synchronized (sharedLock) {
+                inBuy = false;
+            }
+        }
+    }
+
+    public synchronized boolean isInBuy() {
+        return inBuy;
+    }
+
+    public Lock getLockB() {
+        return lockB;
+    }
 }
 
 
