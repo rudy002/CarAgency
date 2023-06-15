@@ -9,7 +9,7 @@ import javax.swing.*;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public abstract class Vehicle {
+public abstract class Vehicle implements Ivehicle {
 
 
     //Data members
@@ -40,12 +40,14 @@ public abstract class Vehicle {
         this.path = path;
     }
 
+    @Override
     public void TravelDistance(double distance){
         double dis = getTotalDistance() + distance;
         setTotalDistance(dis);
     }
 
     //getters and setters
+    @Override
     public boolean setTotalDistance(double totalDistance) {
         if (totalDistance >=0) {
             this.totalDistance = totalDistance;
@@ -55,7 +57,7 @@ public abstract class Vehicle {
     }
 
 
-
+    @Override
     public String getModelName() {
         return modelName;
     }
@@ -145,7 +147,8 @@ public abstract class Vehicle {
 
 
 
-    public synchronized void starBuy() throws InterruptedException {
+    @Override
+    public synchronized void startBuy() throws InterruptedException {
 
         synchronized (sharedLockB) {
 
@@ -164,10 +167,12 @@ public abstract class Vehicle {
         }
     }
 
+    @Override
     public synchronized boolean isInBuy() {
         return inBuy;
     }
 
+    @Override
     public Lock getLockB() {
         return lockB;
     }
