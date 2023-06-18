@@ -20,13 +20,16 @@ public class frameCars extends JFrame implements ActionListener {
 
     //data members
     static ArrayList<Vehicle> vehicleList; //np modifier (only for package gui)
+    private static volatile frameCars instance;
+    private static final Object lock = new Object();
 
 
     public static void main(String[] args) {
 
         vehicleList = new ArrayList<Vehicle>(); //create new array list
         //create new object
-        frameCars frame = new frameCars();
+        frameCars.getInstance();
+
 
     }
 
@@ -176,6 +179,17 @@ public class frameCars extends JFrame implements ActionListener {
             this.dispose(); // Close current frame
         }
 
+    }
+
+    public static frameCars getInstance() {
+        if (instance == null) {
+            synchronized (lock) {
+                if (instance == null) {
+                    instance = new frameCars();
+                }
+            }
+        }
+        return instance;
     }
 
 }
