@@ -174,6 +174,7 @@ public class MenuFrame extends JFrame implements ActionListener {
                             for (Vehicle i : frameCars.vehicleList) {
                                 i.setTotalDistance(0);
                             }
+                            Vehicle.totalDistanceOfAllVehicle = 0.0;
                             Thread.sleep(randomNum);
                             loading.setText("Update Done!");
                             Thread.sleep(700);

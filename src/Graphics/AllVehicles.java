@@ -16,6 +16,8 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
+import static Graphics.frameCars.distanceObserver;
+
 public class AllVehicles {
 
     private ImageIcon imageVehicle;
@@ -82,6 +84,7 @@ public class AllVehicles {
                             JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                     if (result == JOptionPane.YES_OPTION) {
                         JOptionPane.showMessageDialog(null, "You are successfully bought this vehicle", "Congratulations", JOptionPane.INFORMATION_MESSAGE);
+                        distanceObserver.updating(-(vehicle.getTotalDistance()));
 
                         update(vehicle);
                         frame.dispose();

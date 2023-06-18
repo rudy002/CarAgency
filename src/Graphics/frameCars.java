@@ -13,6 +13,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 //import my packages
+import ObserversDP.DistanceObserver;
 import abstractClass.*;
 
 public class frameCars extends JFrame implements ActionListener {
@@ -30,6 +31,9 @@ public class frameCars extends JFrame implements ActionListener {
     }
 
     //data members
+
+    public static DistanceObserver distanceObserver = new DistanceObserver(Vehicle.totalDistanceOfAllVehicle);
+
 
     //all Buttons
     private final JButton buttonJeep = new JButton();
@@ -173,6 +177,5 @@ public class frameCars extends JFrame implements ActionListener {
         }
 
     }
+
 }
-
-

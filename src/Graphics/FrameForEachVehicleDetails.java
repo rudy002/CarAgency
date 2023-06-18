@@ -34,6 +34,7 @@ public class FrameForEachVehicleDetails extends JFrame implements ActionListener
     private JComboBox<Double> comboBoxFuel, comboBoxLifeTime, comboBoxSpeed ;
     private JComboBox<Integer> comboBoxPassengers, comboBoxWheels;
     private JComboBox<String> comboBoxKindOfLand, comboBoxFlag;
+    private ArrayList<Object> parameters = new ArrayList<>();
 
     private JButton confirmButton;
 
@@ -313,42 +314,88 @@ public class FrameForEachVehicleDetails extends JFrame implements ActionListener
             double selectValue = (double) comboBoxSpeed.getSelectedItem();
         }
         if(source == confirmButton){
+
             switch (vehicleType) {
                 case "Jeep": {
+                    parameters.add(modelNameField.getText());
+                    parameters.add((Double)comboBoxSpeed.getSelectedItem());
+                    parameters.add((Double) comboBoxFuel.getSelectedItem());
+                    parameters.add((Double) comboBoxLifeTime.getSelectedItem());
+                    parameters.add(path);
                     update(new Jeep(modelNameField.getText(), (Double)comboBoxSpeed.getSelectedItem(), (Double) comboBoxFuel.getSelectedItem(), (Double) comboBoxLifeTime.getSelectedItem(), path));
                     break;
                 }
                 case "Frigate": {
+                    parameters.add(modelNameField.getText());
+                    parameters.add((Integer) comboBoxPassengers.getSelectedItem());
+                    parameters.add((Double)comboBoxSpeed.getSelectedItem());
+                    parameters.add(path);
                     update(new Frigate(modelNameField.getText(), (Integer) comboBoxPassengers.getSelectedItem(),(Double)comboBoxSpeed.getSelectedItem(), path));
                     break;
                 }
                 case "GamePlane": {
+                    parameters.add((path));
                     update((new GamePlane(path)));
                     break;
                 }
                 case "SpyPlane": {
+                    parameters.add(sourceOfEnergyField.getText());
+                    parameters.add(path);
                     update(new SpyPlane(sourceOfEnergyField.getText(),path));
                     break;
                 }
                 case "Bicycle": {
-                    if (comboBoxKindOfLand.getSelectedItem() == "Paved")
-                        update(new Bicycle(modelNameField.getText(), LandVehicle.kindOfLand.paved,path));
-                    else
-                        update(new Bicycle(modelNameField.getText(), LandVehicle.kindOfLand.dirt,path));
+                    if (comboBoxKindOfLand.getSelectedItem() == "Paved") {
+                        parameters.add(modelNameField.getText());
+                        parameters.add(LandVehicle.kindOfLand.paved);
+                        parameters.add(path);
+                        update(new Bicycle(modelNameField.getText(), LandVehicle.kindOfLand.paved, path));
+                    }
+                    else {
+                        parameters.add(modelNameField.getText());
+                        parameters.add(LandVehicle.kindOfLand.dirt);
+                        parameters.add(path);
+                        update(new Bicycle(modelNameField.getText(), LandVehicle.kindOfLand.dirt, path));
+                    }
                     break;
                 }
                 case "CruiseShip": {
+                    parameters.add(modelNameField.getText());
+                    parameters.add((Integer) comboBoxPassengers.getSelectedItem());
+                    parameters.add((Double)comboBoxSpeed.getSelectedItem());
+                    parameters.add((String) comboBoxFlag.getSelectedItem());
+                    parameters.add(path);
                     update(new CruiseShip(modelNameField.getText(), (Integer) comboBoxPassengers.getSelectedItem(),(Double)comboBoxSpeed.getSelectedItem(), (String) comboBoxFlag.getSelectedItem() , path));
                     break;
                 }
                 case "Amphibious", "HybridPlane": {
-                    if (vehicleType == "Amphibious")
+                    if (vehicleType == "Amphibious"){
+                        parameters.add(modelNameField.getText());
+                        parameters.add((Double) comboBoxSpeed.getSelectedItem());
+                        parameters.add((Integer) comboBoxWheels.getSelectedItem());
+                        parameters.add((Double) comboBoxFuel.getSelectedItem());
+                        parameters.add((Double) comboBoxLifeTime.getSelectedItem());
+                        parameters.add((Integer) comboBoxPassengers.getSelectedItem());
+                        parameters.add(path);
                         update(new Amphibious(modelNameField.getText(), (Double) comboBoxSpeed.getSelectedItem(), (Integer) comboBoxWheels.getSelectedItem(), (Double) comboBoxFuel.getSelectedItem(), (Double) comboBoxLifeTime.getSelectedItem(),(Integer) comboBoxPassengers.getSelectedItem(), path));
-                    else
-                        update(new HybridPlane(modelNameField.getText(), (Double) comboBoxSpeed.getSelectedItem(), (Integer) comboBoxWheels.getSelectedItem(), (Double) comboBoxFuel.getSelectedItem(), (Double) comboBoxLifeTime.getSelectedItem(),(Integer) comboBoxPassengers.getSelectedItem(), path));
+                    }
+                    else {
+                        parameters.add(modelNameField.getText());
+                        parameters.add((Double) comboBoxSpeed.getSelectedItem());
+                        parameters.add((Integer) comboBoxWheels.getSelectedItem());
+                        parameters.add((Double) comboBoxFuel.getSelectedItem());
+                        parameters.add((Double) comboBoxLifeTime.getSelectedItem());
+                        parameters.add((Integer) comboBoxPassengers.getSelectedItem());
+                        parameters.add(path);
+                        update(new HybridPlane(modelNameField.getText(), (Double) comboBoxSpeed.getSelectedItem(), (Integer) comboBoxWheels.getSelectedItem(), (Double) comboBoxFuel.getSelectedItem(), (Double) comboBoxLifeTime.getSelectedItem(), (Integer) comboBoxPassengers.getSelectedItem(), path));
+                    }
                     break;
                 }
                 case "ElectricBicycle": {
+                    parameters.add(modelNameField.getText());
+                    parameters.add((Double) comboBoxSpeed.getSelectedItem());
+                    parameters.add((Double) comboBoxLifeTime.getSelectedItem());
+                    parameters.add(path);
                     update(new ElectricBicycle(modelNameField.getText(), (Double) comboBoxSpeed.getSelectedItem(), (Double) comboBoxLifeTime.getSelectedItem(), path));
                     break;
                 }

@@ -80,6 +80,7 @@ public class takeVehicleForTest {
                                 vehicle.TravelDistance(distance);
                                 TestManager.startTest(vehicle, distance);
                                 JOptionPane.showMessageDialog(null, "The vehicle is now being tested.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                                frameCars.distanceObserver.updating(-(Vehicle.totalDistanceOfAllVehicle));
                                 //vehicle.TravelDistance(distance);
                             } catch (IllegalStateException ex) {
                                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);

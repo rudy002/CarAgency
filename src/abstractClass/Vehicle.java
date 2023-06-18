@@ -31,6 +31,10 @@ public abstract class Vehicle implements Ivehicle {
 
     private String path;
 
+    //for design pattern observer
+    public static Double totalDistanceOfAllVehicle = 0.0;
+
+
     //Constructors
     public Vehicle(String modelName, double totalDistance, int MaxNumberPassenger, double maxSpeed, String path) {
         this.modelName = modelName;
