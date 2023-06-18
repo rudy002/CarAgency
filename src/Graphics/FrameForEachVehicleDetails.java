@@ -7,11 +7,14 @@ package Graphics;
 import RegularClasses.*;
 import abstractClass.LandVehicle;
 import abstractClass.Vehicle;
+import AbstractFactoryDP.*;
+
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class FrameForEachVehicleDetails extends JFrame implements ActionListener {
@@ -24,16 +27,13 @@ public class FrameForEachVehicleDetails extends JFrame implements ActionListener
     private JTextField maxSpeedField;
     private JTextField AverageFuelConsumptionField;
     private JTextField AverageLifeTimeField;
-
     private ImageIcon image1, image2, image3;
-
     private JRadioButton radio1, radio2, radio3, validateButton;
     JLabel imageLabel;
     String vehicleType;
     private JComboBox<Double> comboBoxFuel, comboBoxLifeTime, comboBoxSpeed ;
     private JComboBox<Integer> comboBoxPassengers, comboBoxWheels;
     private JComboBox<String> comboBoxKindOfLand, comboBoxFlag;
-
 
     private JButton confirmButton;
 
@@ -178,6 +178,7 @@ public class FrameForEachVehicleDetails extends JFrame implements ActionListener
                 break;
             }
         }
+
     }
 
 
