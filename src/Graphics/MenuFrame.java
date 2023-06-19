@@ -11,6 +11,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
+import MementoDP.*;
 
 import static java.lang.System.exit;
 
@@ -36,15 +37,21 @@ public class MenuFrame extends JFrame implements ActionListener {
 
     private Object lock = new Object();
 
+    private Originator originator;
+    private CarTaker caretaker;
+
 
     //constructor
     public MenuFrame() {
         super("Menu user");
         this.setSize(800, 600);
-
         JPanel panel = new JPanel(new GridLayout(7, 1));
         getContentPane().add(panel);
         panel.setBackground(Color.darkGray);
+
+        //memento
+        originator = new Originator();
+        caretaker = new CarTaker();
 
         //take image from imageIcon and change size
         Image imageAddVehicle = iconAddVehicle.getImage();
@@ -119,9 +126,13 @@ public class MenuFrame extends JFrame implements ActionListener {
 
         if (source == addVehicleButton) {
             frameCars frameCars = new frameCars();
-            //this.dispose();
+            Memento memento = originator.saveStateToMemento();
+            caretaker.addMemento(memento);
+
         }
         if (source == buyVehicleButton) {
+            Memento memento = originator.saveStateToMemento();
+            caretaker.addMemento(memento);
             AllVehicles allVehicles = new AllVehicles();
             for (Object vehicle : frameCars.vehicleList) {
                 System.out.println(vehicle.toString());
@@ -129,19 +140,28 @@ public class MenuFrame extends JFrame implements ActionListener {
             //this.dispose();
         }
         if (source == takeVehicleButton) {
+            Memento memento = originator.saveStateToMemento();
+            caretaker.addMemento(memento);
             takeVehicleForTest vehicleTest = new takeVehicleForTest();
+
 
 
         }
         //this.dispose();
         if (source == resetDistanceButton) {
+            Memento memento = originator.saveStateToMemento();
+            caretaker.addMemento(memento);
             Reset();
         }
         if (source == changeFlagButton) {
+            Memento memento = originator.saveStateToMemento();
+            caretaker.addMemento(memento);
             FlagsFrame flagsFrame = new FlagsFrame();
             //this.dispose();
         }
         if (source == inventoryButton) {
+            Memento memento = originator.saveStateToMemento();
+            caretaker.addMemento(memento);
             AllVehicles allVehicles = new AllVehicles();
             //this.dispose();
         }
