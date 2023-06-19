@@ -181,7 +181,7 @@ public class frameCars extends JFrame implements ActionListener {
 
     }
 
-    public static frameCars getInstance() {
+    public static frameCars getInstance() { //singleton
         if (instance == null) {
             synchronized (lock) {
                 if (instance == null) {
